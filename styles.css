@@ -1727,3 +1727,20 @@ footer {
 /* ===== TECH FLIP GRID ===== */
 .tech-flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:20px;}
 .tech-flip-grid .vflip-card{height:240px;}
+
+/* ===== TECH LOGO FLIP CARDS ===== */
+.tech-logo-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
+.tech-logo-card{perspective:1100px;width:180px;height:200px;cursor:pointer;flex-shrink:0;}
+.tech-logo-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,0,.2,1);}
+.tech-logo-card:hover .tech-logo-inner{transform:rotateX(-180deg);}
+.tech-logo-front,.tech-logo-back{position:absolute;inset:0;border-radius:18px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:20px;}
+.tech-logo-front{background:linear-gradient(145deg,#131f35,#0c1525);border:1px solid rgba(255,255,255,.08);box-shadow:0 0 0 0 var(--logo-glow,transparent);transition:box-shadow .3s;}
+.tech-logo-card:hover .tech-logo-front{box-shadow:0 0 28px 6px var(--logo-glow,transparent);}
+.tech-logo-img{width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 2px 14px var(--logo-glow,rgba(255,255,255,.1)));transition:transform .35s;}
+.tech-logo-card:hover .tech-logo-img{transform:scale(1.08);}
+.tech-logo-front span{color:#fff;font-size:.95rem;font-weight:700;font-family:'Poppins',sans-serif;letter-spacing:.02em;}
+.tech-logo-back{transform:rotateX(180deg);background:linear-gradient(145deg,#0d1a30,#0a1220);border:1px solid rgba(255,255,255,.1);text-align:center;}
+.tech-logo-back-icon{width:38px;height:38px;object-fit:contain;opacity:.85;}
+.tech-logo-back h3{color:#fff;font-size:.88rem;font-weight:700;font-family:'Poppins',sans-serif;margin:0;color:var(--logo-accent,#fff);}
+.tech-logo-back p{color:rgba(255,255,255,.75);font-size:.76rem;line-height:1.6;margin:0;}
+@media(max-width:600px){.tech-logo-card{width:140px;height:180px;}.tech-logo-img{width:56px;height:56px;}}
