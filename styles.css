@@ -1018,8 +1018,9 @@ footer {
   }
 
   .profile-image {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 280px;
+    border-radius: 16px;
   }
 
   .hero-buttons {
