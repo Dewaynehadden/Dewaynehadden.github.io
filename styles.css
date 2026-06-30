@@ -1788,3 +1788,17 @@ footer {
 /* ===== PROJECT CARD SCREENSHOTS (fit real screenshots properly) ===== */
 .proj-card .vflip-front img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
 .proj-card{height:320px;}
+
+/* ===== CONTACT CARDS — 3 per row, logo icons, bounce ===== */
+.contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+@media(max-width:768px){.contact-cards{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.contact-cards{grid-template-columns:1fr;}}
+.contact-card-link-wrap{text-decoration:none;}
+.contact-card{background:linear-gradient(145deg,#0f1e30,#0c1520);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px 20px;text-align:center;cursor:pointer;transition:border-color .3s,box-shadow .3s;}
+.contact-card:hover{border-color:rgba(255,255,255,.18);box-shadow:0 8px 32px rgba(0,0,0,.3);animation:contactBounce .55s cubic-bezier(.36,.07,.19,.97);}
+@keyframes contactBounce{0%,100%{transform:translateY(0);}20%{transform:translateY(-16px);}40%{transform:translateY(-8px);}60%{transform:translateY(-4px);}80%{transform:translateY(-2px);}}
+.contact-card-icon{display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.contact-logo-img{width:52px;height:52px;object-fit:contain;}
+.contact-card-title{font-size:1.05rem;font-weight:700;font-family:'Poppins',sans-serif;margin-bottom:6px;}
+.contact-card-sub{font-size:.82rem;color:rgba(255,255,255,.65);margin-bottom:4px;word-break:break-all;}
+.contact-card-note{font-size:.74rem;color:rgba(255,255,255,.4);}
