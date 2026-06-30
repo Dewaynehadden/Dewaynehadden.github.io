@@ -1807,3 +1807,4 @@ footer {
 .platform-logo{width:56px;height:56px;object-fit:contain;transition:transform .3s;}
 .platform-item:hover .platform-logo{transform:scale(1.15);}
 .platform-item span{font-size:.88rem;font-weight:700;font-family:'Poppins',sans-serif;}
+.social-icon-img{width:22px;height:22px;object-fit:contain;display:block;}
