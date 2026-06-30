@@ -1784,3 +1784,7 @@ footer {
 .platform-logo-wrap{width:72px;height:72px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);box-shadow:0 0 0 0 var(--logo-glow,transparent);transition:box-shadow .3s;}
 .platform-badge-card:hover .platform-logo-wrap{box-shadow:0 0 28px 6px var(--logo-glow,transparent);}
 .platform-logo-img{width:44px;height:44px;object-fit:contain;}
+
+/* ===== PROJECT CARD SCREENSHOTS (fit real screenshots properly) ===== */
+.proj-card .vflip-front img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;}
+.proj-card{height:320px;}
