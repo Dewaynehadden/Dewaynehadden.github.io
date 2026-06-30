@@ -104,93 +104,134 @@
 <h2>My Expertise</h2>
 <p>A comprehensive toolkit for modern ecommerce success</p>
 </div>
-<div class="container">
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
-<div class="card">
-<div class="card-content">
-<h3 class="card-title">🛒 Shopify Store Design</h3>
+<div class="expertise-carousel-wrap">
+<button class="carousel-btn carousel-prev" id="expertisePrev" aria-label="Previous">&#8249;</button>
+<div class="expertise-carousel" id="expertiseCarousel">
+<div class="expertise-track" id="expertiseTrack">
+<div class="expertise-card">
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&q=80" alt="Shopify Store Design" class="expertise-card-img"/>
+<div class="expertise-card-body">
+<h3>Shopify Store Design</h3>
 <p>Custom theme design, store setup, product optimization</p>
 </div>
 </div>
-<div class="card">
-<div class="card-content">
-<h3 class="card-title">📝 WordPress / WooCommerce</h3>
+<div class="expertise-card">
+<img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=600&q=80" alt="WordPress / WooCommerce" class="expertise-card-img"/>
+<div class="expertise-card-body">
+<h3>WordPress / WooCommerce</h3>
 <p>Flexible ecommerce with full editorial control</p>
 </div>
 </div>
-<div class="card">
-<div class="card-content">
-<h3 class="card-title">✨ Wix Design</h3>
+<div class="expertise-card">
+<img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=600&q=80" alt="Wix Design" class="expertise-card-img"/>
+<div class="expertise-card-body">
+<h3>Wix Design</h3>
 <p>Polished storefronts with seamless design integration</p>
 </div>
 </div>
-<div class="card">
-<div class="card-content">
-<h3 class="card-title">🎨 Webflow Development</h3>
+<div class="expertise-card">
+<img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=600&q=80" alt="Webflow Development" class="expertise-card-img"/>
+<div class="expertise-card-body">
+<h3>Webflow Development</h3>
 <p>Pixel-perfect design freedom and advanced interactions</p>
 </div>
 </div>
-<div class="card">
-<div class="card-content">
-<h3 class="card-title">🔍 SEO Optimization</h3>
+<div class="expertise-card">
+<img src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&w=600&q=80" alt="SEO Optimization" class="expertise-card-img"/>
+<div class="expertise-card-body">
+<h3>SEO Optimization</h3>
 <p>On-page and technical SEO for organic growth</p>
 </div>
 </div>
-<div class="card">
-<div class="card-content">
-<h3 class="card-title">🚀 Website Migration</h3>
+<div class="expertise-card">
+<img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=600&q=80" alt="Website Migration" class="expertise-card-img"/>
+<div class="expertise-card-body">
+<h3>Website Migration</h3>
 <p>Smooth platform transitions with zero data loss</p>
 </div>
 </div>
-<div class="card">
-<div class="card-content">
-<h3 class="card-title">📊 Product Research</h3>
+<div class="expertise-card">
+<img src="https://images.unsplash.com/photo-1433190152045-5a94184895da?auto=format&fit=crop&w=600&q=80" alt="Product Research" class="expertise-card-img"/>
+<div class="expertise-card-body">
+<h3>Product Research</h3>
 <p>Data-driven market analysis for winning products</p>
 </div>
 </div>
-<div class="card">
-<div class="card-content">
-<h3 class="card-title">📍 Google My Business</h3>
+<div class="expertise-card">
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Google My Business" class="expertise-card-img"/>
+<div class="expertise-card-body">
+<h3>Google My Business</h3>
 <p>Local SEO setup and optimization for visibility</p>
 </div>
 </div>
 </div>
 </div>
+<button class="carousel-btn carousel-next" id="expertiseNext" aria-label="Next">&#8250;</button>
+</div>
+<div class="carousel-dots" id="expertiseDots"></div>
 </section>
 <!-- WHY WORK WITH ME SECTION -->
-<section class="section">
+<section class="section why-section">
 <div class="section-header">
 <h2>Why Work With Me</h2>
 <p>What sets me apart in every project</p>
 </div>
 <div class="container">
-<div class="cards-grid">
-<div class="card">
-<div class="card-icon">🎯</div>
-<div class="card-content">
-<h3 class="card-title">Conversion-Focused</h3>
-<p class="card-description">Every design decision is made with sales in mind. Your store isn't just beautiful — it's built to convert.</p>
+<div class="why-flip-grid">
+<div class="why-flip why-anim" style="--why-delay:.05s">
+<div class="why-flip-inner">
+<div class="why-flip-front">
+<div class="why-flip-icon-wrap">🎯</div>
+<h3>Conversion-Focused</h3>
+<span class="why-flip-hint">Hover to learn more</span>
+</div>
+<div class="why-flip-back">
+<div class="why-flip-back-icon">🎯</div>
+<h3>Conversion-Focused</h3>
+<p>Every design decision is made with sales in mind. Your store isn't just beautiful — it's built to convert visitors into paying customers.</p>
 </div>
 </div>
-<div class="card">
-<div class="card-icon">⚡</div>
-<div class="card-content">
-<h3 class="card-title">Fast Delivery</h3>
-<p class="card-description">I respect deadlines without cutting corners. Quality and speed go hand in hand on every project.</p>
+</div>
+<div class="why-flip why-anim" style="--why-delay:.18s">
+<div class="why-flip-inner">
+<div class="why-flip-front">
+<div class="why-flip-icon-wrap">⚡</div>
+<h3>Fast Delivery</h3>
+<span class="why-flip-hint">Hover to learn more</span>
+</div>
+<div class="why-flip-back">
+<div class="why-flip-back-icon">⚡</div>
+<h3>Fast Delivery</h3>
+<p>I respect deadlines without cutting corners. Quality and speed go hand in hand on every project I take on.</p>
 </div>
 </div>
-<div class="card">
-<div class="card-icon">💬</div>
-<div class="card-content">
-<h3 class="card-title">Clear Communication</h3>
-<p class="card-description">You'll always know where your project stands. Regular updates and transparency throughout.</p>
+</div>
+<div class="why-flip why-anim" style="--why-delay:.31s">
+<div class="why-flip-inner">
+<div class="why-flip-front">
+<div class="why-flip-icon-wrap">💬</div>
+<h3>Clear Communication</h3>
+<span class="why-flip-hint">Hover to learn more</span>
+</div>
+<div class="why-flip-back">
+<div class="why-flip-back-icon">💬</div>
+<h3>Clear Communication</h3>
+<p>You'll always know where your project stands. Regular updates and full transparency throughout every stage.</p>
 </div>
 </div>
-<div class="card">
-<div class="card-icon">🔁</div>
-<div class="card-content">
-<h3 class="card-title">End-to-End Service</h3>
-<p class="card-description">From setup to launch and beyond. I handle every detail so you can focus on your business.</p>
+</div>
+<div class="why-flip why-anim" style="--why-delay:.44s">
+<div class="why-flip-inner">
+<div class="why-flip-front">
+<div class="why-flip-icon-wrap">🔁</div>
+<h3>End-to-End Service</h3>
+<span class="why-flip-hint">Hover to learn more</span>
+</div>
+<div class="why-flip-back">
+<div class="why-flip-back-icon">🔁</div>
+<h3>End-to-End Service</h3>
+<p>From setup to launch and beyond. I handle every detail so you can focus on growing your business.</p>
+</div>
 </div>
 </div>
 </div>
@@ -270,5 +311,68 @@
 <!-- FLOATING WHATSAPP BUTTON -->
 <a class="whatsapp-float" href="https://wa.me/message/BYC7YFBUX4QGG1" target="_blank" title="Chat on WhatsApp"></a>
 <script src="animations.js"></script>
+<script>
+(function(){
+  var track = document.getElementById('expertiseTrack');
+  var dotsWrap = document.getElementById('expertiseDots');
+  if(!track) return;
+
+  var cards = track.querySelectorAll('.expertise-card');
+  var total = cards.length;
+  var current = 0;
+  var autoTimer;
+
+  function visibleCount(){
+    return window.innerWidth >= 900 ? 3 : window.innerWidth >= 600 ? 2 : 1;
+  }
+
+  function cardWidth(){
+    return cards[0].getBoundingClientRect().width + 20; // 20 = gap
+  }
+
+  function maxIndex(){
+    return total - visibleCount();
+  }
+
+  function goTo(idx){
+    current = Math.max(0, Math.min(idx, maxIndex()));
+    track.style.transform = 'translateX(-' + (current * cardWidth()) + 'px)';
+    dots.forEach(function(d, i){ d.classList.toggle('active', i === current); });
+  }
+
+  // Build dots
+  var dots = [];
+  for(var i = 0; i <= maxIndex(); i++){
+    var d = document.createElement('button');
+    d.className = 'carousel-dot' + (i===0?' active':'');
+    d.setAttribute('data-i', i);
+    d.addEventListener('click', (function(ii){ return function(){ goTo(ii); resetAuto(); }; })(i));
+    dotsWrap.appendChild(d);
+    dots.push(d);
+  }
+
+  document.getElementById('expertisePrev').addEventListener('click', function(){ goTo(current-1); resetAuto(); });
+  document.getElementById('expertiseNext').addEventListener('click', function(){ goTo(current+1); resetAuto(); });
+
+  function startAuto(){ autoTimer = setInterval(function(){ goTo(current >= maxIndex() ? 0 : current+1); }, 3000); }
+  function resetAuto(){ clearInterval(autoTimer); startAuto(); }
+
+  window.addEventListener('resize', function(){ goTo(Math.min(current, maxIndex())); });
+  startAuto();
+
+  // Why flip card entrance animation via IntersectionObserver
+  var whyCards = document.querySelectorAll('.why-anim');
+  if('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('why-visible'); obs.unobserve(e.target); }
+      });
+    }, {threshold: 0.2});
+    whyCards.forEach(function(c){ obs.observe(c); });
+  } else {
+    whyCards.forEach(function(c){ c.classList.add('why-visible'); });
+  }
+})();
+</script>
 </body>
 </html>
