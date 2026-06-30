@@ -320,3 +320,59 @@ function addEventListenerToAll(selector, event, callback) {
     element.addEventListener(event, callback);
   });
 }
+
+// ── PARTICLE BUBBLE EFFECT ──
+(function(){
+  var canvas = document.getElementById('bubble-canvas');
+  if(!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W, H, bubbles = [];
+
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = document.body.scrollHeight;
+  }
+
+  function Bubble(){
+    this.x = Math.random()*W;
+    this.y = Math.random()*H;
+    this.r = Math.random()*60+10;
+    this.dx = (Math.random()-.5)*0.6;
+    this.dy = (Math.random()-.5)*0.6;
+    this.alpha = Math.random()*0.18+0.04;
+    this.color = Math.random()>0.5?'100,200,120':'80,180,255';
+  }
+
+  Bubble.prototype.draw = function(){
+    ctx.beginPath();
+    var g = ctx.createRadialGradient(this.x,this.y,this.r*.2,this.x,this.y,this.r);
+    g.addColorStop(0,'rgba('+this.color+','+this.alpha*1.8+')');
+    g.addColorStop(1,'rgba('+this.color+',0)');
+    ctx.fillStyle=g;
+    ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+    ctx.fill();
+  };
+
+  Bubble.prototype.update = function(){
+    this.x+=this.dx; this.y+=this.dy;
+    if(this.x<-this.r||this.x>W+this.r) this.dx*=-1;
+    if(this.y<-this.r||this.y>H+this.r) this.dy*=-1;
+    this.draw();
+  };
+
+  function init(){
+    resize();
+    bubbles=[];
+    var count=Math.min(40,Math.floor(W/30));
+    for(var i=0;i<count;i++) bubbles.push(new Bubble());
+  }
+
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    bubbles.forEach(function(b){b.update();});
+    requestAnimationFrame(loop);
+  }
+
+  window.addEventListener('resize',function(){init();});
+  init(); loop();
+})();

@@ -1587,3 +1587,69 @@ footer {
     max-height: 300px;
   }
 }
+
+/* ── BUBBLE CANVAS ── */
+#bubble-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+.hero,.section,nav,footer{position:relative;z-index:1;}
+
+/* ── SERVICE FLIP CARDS ── */
+.flip-service-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;margin-top:2rem;}
+.flip-svc{perspective:1000px;height:300px;cursor:pointer;}
+.flip-svc-inner{
+  position:relative;width:100%;height:100%;
+  transform-style:preserve-3d;
+  transition:transform .65s cubic-bezier(.4,0,.2,1);
+}
+.flip-svc:hover .flip-svc-inner{transform:rotateY(-180deg);}
+.flip-svc-front,.flip-svc-back{
+  position:absolute;inset:0;border-radius:16px;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  overflow:hidden;
+}
+.flip-svc-front{background:#1a2340;}
+.flip-svc-front img{width:100%;height:100%;object-fit:cover;display:block;opacity:.75;}
+.flip-svc-front-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(10,15,30,.92) 100%);
+  display:flex;align-items:flex-end;padding:20px;
+}
+.flip-svc-front-title{color:#fff;font-size:1.05rem;font-weight:700;font-family:'Poppins',sans-serif;}
+.flip-svc-back{
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  transform:rotateY(180deg);
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  padding:28px;text-align:center;gap:14px;
+}
+.flip-svc-back h3{color:#fff;font-size:1rem;font-weight:700;font-family:'Poppins',sans-serif;margin:0;}
+.flip-svc-back p{color:rgba(255,255,255,.8);font-size:.85rem;line-height:1.65;margin:0;}
+.flip-svc-back a{
+  color:#4ade80;font-size:.82rem;font-weight:600;text-decoration:none;
+  border:1px solid #4ade80;padding:7px 18px;border-radius:20px;
+  transition:.2s;
+}
+.flip-svc-back a:hover{background:#4ade80;color:#000;}
+
+/* ── PROJECT CARDS WITH IMAGES ── */
+.project-card{position:relative;border-radius:14px;overflow:hidden;height:220px;}
+.project-card-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.project-card-content{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(10,15,30,.3) 0%,rgba(10,15,30,.85) 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:20px;
+  transition:.35s;
+}
+.project-card:hover .project-card-content{background:rgba(10,15,30,.2);}
+.project-card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(15,32,39,.92),rgba(44,83,100,.92));
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  padding:24px;text-align:center;gap:10px;
+  opacity:0;transition:.35s;
+}
+.project-card:hover .project-card-overlay{opacity:1;}
+.project-card:hover .project-card-content{opacity:0;}
+
+/* ── UPWORK CARDS WITH REAL IMAGES ── */
+.upwork-card-img{height:180px;overflow:hidden;border-radius:12px 12px 0 0;}
+.upwork-card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:.4s;}
+.upwork-card:hover .upwork-card-img img{transform:scale(1.06);}
