@@ -1744,3 +1744,43 @@ footer {
 .tech-logo-back h3{color:#fff;font-size:.88rem;font-weight:700;font-family:'Poppins',sans-serif;margin:0;color:var(--logo-accent,#fff);}
 .tech-logo-back p{color:rgba(255,255,255,.75);font-size:.76rem;line-height:1.6;margin:0;}
 @media(max-width:600px){.tech-logo-card{width:140px;height:180px;}.tech-logo-img{width:56px;height:56px;}}
+
+/* ===== STATS TICKER ===== */
+.stats-ticker-section{overflow:hidden;background:linear-gradient(90deg,rgba(40,168,100,.12),rgba(40,100,200,.1),rgba(40,168,100,.12));border-top:1px solid rgba(40,168,100,.2);border-bottom:1px solid rgba(40,168,100,.2);padding:18px 0;margin-bottom:2rem;}
+.stats-ticker-wrap{overflow:hidden;width:100%;}
+.stats-ticker{display:flex;align-items:center;gap:0;width:max-content;animation:tickerMove 22s linear infinite;}
+.stats-ticker:hover{animation-play-state:paused;}
+@keyframes tickerMove{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+.ticker-item{display:flex;flex-direction:column;align-items:center;padding:0 36px;white-space:nowrap;}
+.ticker-num{font-size:1.6rem;font-weight:800;font-family:'Poppins',sans-serif;color:var(--accent,#28a864);line-height:1;}
+.ticker-label{font-size:.72rem;font-weight:600;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.08em;margin-top:3px;}
+.ticker-sep{color:rgba(40,168,100,.5);font-size:1.1rem;flex-shrink:0;padding:0 4px;}
+
+/* ===== REVIEW FLIP CARDS ===== */
+.rev-flip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;}
+.rev-flip-card{perspective:1100px;height:340px;cursor:pointer;}
+.rev-flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,0,.2,1);}
+.rev-flip-card:hover .rev-flip-inner{transform:rotateX(-180deg);}
+.rev-flip-front,.rev-flip-back{position:absolute;inset:0;border-radius:18px;backface-visibility:hidden;-webkit-backface-visibility:hidden;padding:26px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;}
+.rev-flip-front{background:linear-gradient(145deg,#0f1e30,#0a1220);border:1px solid rgba(255,255,255,.08);gap:8px;justify-content:center;}
+.rev-stars{color:#f4c430;font-size:1.1rem;letter-spacing:2px;}
+.rev-avatar{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;font-weight:700;font-family:'Poppins',sans-serif;color:#fff;margin:4px 0;flex-shrink:0;}
+.rev-front-name{font-size:.95rem;font-weight:700;font-family:'Poppins',sans-serif;color:#fff;}
+.rev-front-role{font-size:.75rem;color:rgba(255,255,255,.5);margin-top:2px;}
+.rev-excerpt{font-size:.8rem;color:rgba(255,255,255,.7);line-height:1.55;margin:6px 0 0;font-style:italic;}
+.rev-hint{margin-top:auto;font-size:.7rem;color:var(--accent,#28a864);opacity:.7;font-weight:500;}
+.rev-flip-back{transform:rotateX(180deg);background:linear-gradient(145deg,#0a2718,#0d1a30);border:1px solid rgba(40,200,100,.2);gap:10px;justify-content:space-between;overflow:hidden;}
+.rev-full{font-size:.78rem;color:rgba(255,255,255,.82);line-height:1.65;font-style:italic;flex:1;overflow:auto;scrollbar-width:none;}
+.rev-full::-webkit-scrollbar{display:none;}
+.rev-back-author{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding-top:8px;border-top:1px solid rgba(255,255,255,.08);flex-shrink:0;}
+.rev-avatar-sm{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:700;font-family:'Poppins',sans-serif;color:#fff;flex-shrink:0;}
+.rev-back-name{font-size:.82rem;font-weight:700;color:#fff;}
+.rev-back-meta{font-size:.7rem;color:rgba(255,255,255,.5);margin-top:2px;}
+@media(max-width:600px){.rev-flip-card{height:300px;}.rev-excerpt{display:none;}}
+
+/* ===== PLATFORM LOGO CARDS ===== */
+.platform-badge-card{transition:transform .3s,box-shadow .3s;}
+.platform-badge-card:hover{transform:translateY(-6px);}
+.platform-logo-wrap{width:72px;height:72px;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);box-shadow:0 0 0 0 var(--logo-glow,transparent);transition:box-shadow .3s;}
+.platform-badge-card:hover .platform-logo-wrap{box-shadow:0 0 28px 6px var(--logo-glow,transparent);}
+.platform-logo-img{width:44px;height:44px;object-fit:contain;}
