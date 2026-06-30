@@ -1707,3 +1707,23 @@ footer {
 .vflip-tags{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:12px;}
 .vflip-back a{display:inline-block;padding:8px 22px;background:#28a864;color:#fff;border-radius:20px;font-size:.8rem;font-weight:600;text-decoration:none;transition:background .2s,color .2s;}
 .vflip-back a:hover{background:#4ade80;color:#000;}
+
+/* ===== STAT FLIP CARDS (What My Clients Achieve) ===== */
+.stat-flip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;}
+.stat-flip-card{perspective:1100px;height:280px;cursor:pointer;}
+.stat-flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,0,.2,1);}
+.stat-flip-card:hover .stat-flip-inner{transform:rotateX(-180deg);}
+.stat-flip-front,.stat-flip-back{position:absolute;inset:0;border-radius:18px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;}
+.stat-flip-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.3);transition:filter .4s;}
+.stat-flip-card:hover .stat-flip-bg{filter:brightness(.2);}
+.stat-flip-overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
+.stat-flip-number{font-size:3.2rem;font-weight:800;font-family:'Poppins',sans-serif;color:var(--accent,#28a864);line-height:1;text-shadow:0 0 30px rgba(40,168,100,.6);}
+.stat-flip-title{font-size:1rem;font-weight:700;font-family:'Poppins',sans-serif;color:#fff;letter-spacing:.02em;}
+.stat-flip-back{transform:rotateX(180deg);background:linear-gradient(145deg,#0a2718,#0d1a30);border:1px solid rgba(40,200,100,.2);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 24px;text-align:center;}
+.stat-flip-back-number{font-size:2.2rem;font-weight:800;font-family:'Poppins',sans-serif;color:var(--accent,#28a864);margin-bottom:10px;}
+.stat-flip-back h3{color:#fff;font-size:.95rem;font-weight:700;font-family:'Poppins',sans-serif;margin:0 0 10px;}
+.stat-flip-back p{color:rgba(255,255,255,.82);font-size:.82rem;line-height:1.65;margin:0;}
+
+/* ===== TECH FLIP GRID ===== */
+.tech-flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:20px;}
+.tech-flip-grid .vflip-card{height:240px;}
