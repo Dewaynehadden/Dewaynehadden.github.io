@@ -1810,3 +1810,118 @@ footer {
 .platform-item:hover .platform-logo{transform:scale(1.15);}
 .platform-item span{font-size:.88rem;font-weight:700;font-family:'Poppins',sans-serif;}
 .social-icon-img{width:22px;height:22px;object-fit:contain;display:block;}
+
+/* ============================================================
+   COMPREHENSIVE MOBILE RESPONSIVE OVERRIDES
+   ============================================================ */
+
+/* ── Fluid font sizes for stat numbers ── */
+.stat-flip-number { font-size: clamp(2rem, 7vw, 3.2rem); }
+.stat-flip-back-number { font-size: clamp(1.4rem, 5vw, 2.2rem); }
+.why-flip-icon-wrap { font-size: clamp(1.8rem, 5vw, 2.8rem); }
+.ticker-num { font-size: clamp(1.1rem, 4vw, 1.6rem); }
+
+/* ── 768px tablet ── */
+@media (max-width: 768px) {
+  /* Grids → 2 columns */
+  .flip-service-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .why-flip-grid     { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .vflip-grid        { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .stat-flip-grid    { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .tech-flip-grid    { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+
+  /* Reduce tall fixed heights */
+  .flip-svc          { height: 260px; }
+  .why-flip          { height: 240px; }
+  .vflip-card        { height: 260px; }
+  .stat-flip-card    { height: 250px; }
+  .rev-flip-card     { height: 300px; }
+  .tech-flip-grid .vflip-card { height: 210px; }
+
+  /* Footer columns stack */
+  .footer-top        { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-col        { text-align: center; }
+  .footer-links      { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; }
+  .social-icons      { justify-content: center; }
+
+  /* Hero image center on mobile */
+  .hero-image        { display: flex; justify-content: center; }
+
+  /* Section padding */
+  .section           { padding: 2.5rem 1rem; }
+}
+
+/* ── 480px small mobile ── */
+@media (max-width: 480px) {
+  /* All grids → single column */
+  .flip-service-grid { grid-template-columns: 1fr; gap: 14px; }
+  .why-flip-grid     { grid-template-columns: 1fr; gap: 14px; }
+  .vflip-grid        { grid-template-columns: 1fr; gap: 14px; }
+  .stat-flip-grid    { grid-template-columns: 1fr; gap: 14px; }
+  .tech-flip-grid    { grid-template-columns: 1fr; gap: 14px; }
+  .rev-flip-grid     { grid-template-columns: 1fr; gap: 14px; }
+  .contact-cards     { grid-template-columns: 1fr; gap: 14px; }
+  .platform-row      { gap: 1.5rem; }
+
+  /* Card heights trimmed for small screens */
+  .flip-svc          { height: 230px; }
+  .why-flip          { height: 220px; }
+  .vflip-card        { height: 240px; }
+  .stat-flip-card    { height: 230px; }
+  .rev-flip-card     { height: 320px; }
+  .tech-flip-grid .vflip-card { height: 200px; }
+
+  /* Padding inside cards */
+  .flip-svc-back     { padding: 18px 14px; }
+  .why-flip-front, .why-flip-back { padding: 20px 16px; }
+  .stat-flip-back    { padding: 20px 16px; }
+  .contact-card      { padding: 20px 14px; }
+  .contact-logo-img  { width: 40px; height: 40px; }
+  .contact-card-title { font-size: .95rem; }
+
+  /* Profile image */
+  .profile-image     { width: 180px; height: 230px; border-radius: 14px; }
+
+  /* Tech logo cards */
+  .tech-logo-card    { width: 120px; height: 160px; }
+  .tech-logo-img     { width: 48px; height: 48px; }
+
+  /* Platform logos */
+  .platform-logo     { width: 44px; height: 44px; }
+  .platform-item span { font-size: .78rem; }
+
+  /* Stat flip icon padding */
+  .stat-flip-overlay { gap: 6px; }
+  .stat-flip-title   { font-size: .85rem; }
+
+  /* Why flip icons */
+  .why-flip-front h3, .why-flip-back h3 { font-size: .9rem; }
+  .why-flip-back p   { font-size: .78rem; }
+
+  /* Social icon img */
+  .social-icon-img   { width: 18px; height: 18px; }
+
+  /* Nav */
+  .logo-text         { font-size: 1.1rem; }
+  .logo-img          { width: 32px; height: 32px; }
+
+  /* Section padding */
+  .section           { padding: 2rem 0.75rem; }
+
+  /* Footer */
+  .footer-bottom     { flex-direction: column; gap: .5rem; text-align: center; font-size: .8rem; }
+
+  /* WhatsApp float */
+  .whatsapp-float    { width: 44px; height: 44px; bottom: 1rem; right: 1rem; }
+}
+
+/* ── Very small phones (360px and below) ── */
+@media (max-width: 360px) {
+  .profile-image     { width: 160px; height: 200px; }
+  .stat-flip-card    { height: 210px; }
+  .why-flip          { height: 210px; }
+  .vflip-card        { height: 220px; }
+  .tech-logo-card    { width: 100px; height: 140px; }
+  .tech-logo-img     { width: 40px; height: 40px; }
+  .section           { padding: 1.5rem 0.6rem; }
+}
