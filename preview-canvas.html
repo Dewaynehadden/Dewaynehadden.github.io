@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bobby Portfolio Preview Canvas</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<style>
+  :root{--bg:#0a0f1e;--panel:#131929;--accent:#00d4ff;--text:#fff;--muted:#a8adc5;}
+  *{box-sizing:border-box} body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
+  header{padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:rgba(10,15,30,.96);position:sticky;top:0;z-index:10}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800}.brand img{width:38px;height:38px;border-radius:50%}.brand span{color:var(--accent)}
+  nav{display:flex;gap:8px;flex-wrap:wrap}button,a.btn{background:transparent;border:1px solid rgba(255,255,255,.14);color:var(--muted);padding:9px 12px;border-radius:8px;text-decoration:none;font-weight:700;cursor:pointer}button.active,a.btn:hover,button:hover{color:var(--accent);border-color:var(--accent);background:rgba(0,212,255,.08)}
+  main{display:grid;grid-template-columns:300px 1fr;min-height:calc(100vh - 72px)} aside{border-right:1px solid rgba(255,255,255,.08);padding:18px;background:#0d1324}.card{background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px;margin-bottom:14px}.card h2{font-size:18px;margin:0 0 8px}.card p,.card li{color:var(--muted);line-height:1.5;font-size:14px}.card ul{padding-left:18px;margin:8px 0}.stage{padding:18px}.frame-wrap{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);height:calc(100vh - 108px)}iframe{border:0;width:100%;height:100%;display:block;background:#0a0f1e}.mobile .frame-wrap{width:390px;height:760px;margin:auto}.mobile .stage{overflow:auto}@media(max-width:900px){main{grid-template-columns:1fr}aside{border-right:0;border-bottom:1px solid rgba(255,255,255,.08)}.frame-wrap{height:720px}.mobile .frame-wrap{width:100%;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><img src="assets/logo.png" alt="Bobby Dev logo"><div>Bobby Dev <span>Preview Canvas</span></div></div>
+  <nav>
+    <button data-page="index.html" class="active">Home</button><button data-page="about.html">About</button><button data-page="services.html">Services</button><button data-page="portfolio.html">Portfolio</button><button data-page="reviews.html">Reviews</button><button data-page="contact.html">Contact</button><button id="toggle">Mobile View</button><a class="btn" href="index.html" target="_blank">Open Live Page</a>
+  </nav>
+</header>
+<main id="main">
+  <aside>
+    <div class="card"><h2>What was fixed</h2><ul><li>Renamed files to launch-ready names.</li><li>Added favicon links to every HTML page.</li><li>Created /assets/ folder with logo, favicon, testimonial video, and profile placeholder.</li><li>Cleaned huge base64 logo fallback from the HTML.</li><li>Checked the site in a browser preview.</li></ul></div>
+    <div class="card"><h2>Before going live</h2><p>Replace <b>assets/bobby.jpg</b> with Bobby's real photo, update real project links, then upload this folder to hosting.</p></div>
+  </aside>
+  <section class="stage"><div class="frame-wrap"><iframe id="frame" src="index.html" title="Portfolio preview"></iframe></div></section>
+</main>
+<script>
+const frame=document.getElementById('frame');const buttons=[...document.querySelectorAll('button[data-page]')];buttons.forEach(b=>b.onclick=()=>{buttons.forEach(x=>x.classList.remove('active'));b.classList.add('active');frame.src=b.dataset.page;});document.getElementById('toggle').onclick=()=>{document.getElementById('main').classList.toggle('mobile');document.getElementById('toggle').textContent=document.getElementById('main').classList.contains('mobile')?'Desktop View':'Mobile View';};
+</script>
+</body></html>
