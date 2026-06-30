@@ -1802,3 +1802,8 @@ footer {
 .contact-card-title{font-size:1.05rem;font-weight:700;font-family:'Poppins',sans-serif;margin-bottom:6px;}
 .contact-card-sub{font-size:.82rem;color:rgba(255,255,255,.65);margin-bottom:4px;word-break:break-all;}
 .contact-card-note{font-size:.74rem;color:rgba(255,255,255,.4);}
+.platform-row{display:flex;flex-wrap:wrap;justify-content:center;gap:2.5rem;align-items:center;padding:1rem 0;}
+.platform-item{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;}
+.platform-logo{width:56px;height:56px;object-fit:contain;transition:transform .3s;}
+.platform-item:hover .platform-logo{transform:scale(1.15);}
+.platform-item span{font-size:.88rem;font-weight:700;font-family:'Poppins',sans-serif;}
