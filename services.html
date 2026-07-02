@@ -7,7 +7,115 @@
 <title>Services - Bobby Dev Ecommerce Specialist</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Poppins:wght@600;700&amp;display=swap" rel="stylesheet"/>
 <link href="styles.css" rel="stylesheet"/>
-<link href="assets/favicon.png" rel="icon" type="image/png"/><link href="favicon.ico" rel="shortcut icon"/><link href="assets/apple-touch-icon.png" rel="apple-touch-icon"/></head>
+<link href="assets/favicon.png" rel="icon" type="image/png"/><link href="favicon.ico" rel="shortcut icon"/><link href="assets/apple-touch-icon.png" rel="apple-touch-icon"/>
+<style>
+/* ── Click-to-flip for service cards (override hover) ── */
+.services-grid .vflip-card:hover .vflip-inner { transform: none; }
+.services-grid .vflip-card.flipped .vflip-inner { transform: rotateX(-180deg); }
+.services-grid .vflip-card { cursor: pointer; }
+.svc-flip-hint {
+  position: absolute; bottom: 12px; right: 14px;
+  font-size: .68rem; color: rgba(255,255,255,.45);
+  letter-spacing: .04em; pointer-events: none;
+}
+.svc-back-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: .75rem; color: rgba(255,255,255,.5);
+  cursor: pointer; background: none; border: none;
+  margin-top: 6px; padding: 0; text-decoration: none;
+}
+.svc-back-link:hover { color: var(--accent); }
+
+/* ── Contact Modal ── */
+.svc-modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,.75); backdrop-filter: blur(6px);
+  align-items: center; justify-content: center; padding: 1rem;
+}
+.svc-modal-overlay.open { display: flex; }
+.svc-modal {
+  background: linear-gradient(145deg,#0f1e30,#0a1220);
+  border: 1px solid rgba(40,200,120,.25);
+  border-radius: 20px; padding: 2rem;
+  width: 100%; max-width: 520px;
+  max-height: 90vh; overflow-y: auto;
+  position: relative; box-shadow: 0 0 60px rgba(40,168,100,.2);
+  scrollbar-width: none;
+}
+.svc-modal::-webkit-scrollbar { display: none; }
+.svc-modal-close {
+  position: absolute; top: 14px; right: 18px;
+  background: rgba(255,255,255,.08); border: none; color: #fff;
+  width: 32px; height: 32px; border-radius: 50%;
+  font-size: 1.1rem; cursor: pointer; display: flex;
+  align-items: center; justify-content: center; transition: background .2s;
+}
+.svc-modal-close:hover { background: rgba(255,255,255,.18); }
+.svc-modal-title {
+  font-family: 'Poppins', sans-serif; font-size: 1.35rem;
+  font-weight: 700; color: #fff; margin: 0 0 4px;
+}
+.svc-modal-service {
+  display: inline-block; background: rgba(40,168,100,.18);
+  color: var(--accent,#28a864); font-size: .78rem; font-weight: 600;
+  padding: 3px 12px; border-radius: 20px; margin-bottom: 18px;
+}
+.svc-modal-sub { font-size: .88rem; color: rgba(255,255,255,.6); margin-bottom: 16px; }
+
+/* Quick contact buttons */
+.svc-quick-btns {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;
+}
+.svc-quick-btn {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; border-radius: 12px; text-decoration: none;
+  font-size: .85rem; font-weight: 600; transition: transform .2s, box-shadow .2s;
+  border: 1px solid rgba(255,255,255,.08);
+}
+.svc-quick-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.3); }
+.svc-quick-btn img { width: 22px; height: 22px; flex-shrink: 0; }
+.svc-quick-btn.wa  { background: rgba(37,211,102,.12); color: #25D366; border-color: rgba(37,211,102,.3); }
+.svc-quick-btn.up  { background: rgba(111,218,68,.12);  color: #6FDA44; border-color: rgba(111,218,68,.3); }
+.svc-quick-btn.fv  { background: rgba(29,191,115,.12); color: #1DBF73; border-color: rgba(29,191,115,.3); }
+.svc-quick-btn.gm  { background: rgba(234,67,53,.12);   color: #EA4335; border-color: rgba(234,67,53,.3); }
+
+/* Divider */
+.svc-divider {
+  display: flex; align-items: center; gap: 12px; margin: 18px 0;
+}
+.svc-divider::before, .svc-divider::after {
+  content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.1);
+}
+.svc-divider span { font-size: .75rem; color: rgba(255,255,255,.4); white-space: nowrap; }
+
+/* Form */
+.svc-form { display: flex; flex-direction: column; gap: 12px; }
+.svc-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.svc-form input, .svc-form select, .svc-form textarea {
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+  border-radius: 10px; padding: 12px 14px; color: #fff;
+  font-family: 'Inter', sans-serif; font-size: .88rem; width: 100%;
+  box-sizing: border-box; outline: none; transition: border-color .2s;
+}
+.svc-form input:focus, .svc-form select:focus, .svc-form textarea:focus {
+  border-color: var(--accent,#28a864);
+}
+.svc-form input::placeholder, .svc-form textarea::placeholder { color: rgba(255,255,255,.35); }
+.svc-form select { color: rgba(255,255,255,.7); }
+.svc-form select option { background: #0f1e30; color: #fff; }
+.svc-form textarea { resize: vertical; min-height: 100px; }
+.svc-form .btn-primary {
+  padding: 14px; font-size: .95rem; border-radius: 12px; cursor: pointer;
+  border: none; font-weight: 700;
+}
+
+@media (max-width: 520px) {
+  .svc-form-row { grid-template-columns: 1fr; }
+  .svc-quick-btns { grid-template-columns: 1fr; }
+  .svc-modal { padding: 1.4rem; }
+}
+</style>
+</head>
 <body>
 <canvas id="bubble-canvas"></canvas>
 <!-- NAVIGATION -->
@@ -58,123 +166,157 @@
 <section class="section" style="text-align: center; padding-top: 4rem;">
 <h1>8 Services. One Specialist.</h1>
 <p style="font-size: 1.1rem; max-width: 600px; margin: 1.5rem auto; color: var(--text-secondary);">Every service is built around one goal: helping ecommerce businesses launch faster, rank higher, and sell more.</p>
+<p style="font-size:.85rem;color:rgba(255,255,255,.4);margin-top:-1rem;">Click any card to learn more &amp; get started</p>
 </section>
 <!-- SERVICES GRID -->
 <section class="section">
 <div class="container">
-<div class="vflip-grid">
-<div class="vflip-card">
+<div class="vflip-grid services-grid">
+
+<!-- 1. Shopify Store Design -->
+<div class="vflip-card" onclick="toggleFlip(this)">
 <div class="vflip-inner">
 <div class="vflip-front">
-<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&q=80" alt="Shopify Store Design"/>
+<img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&q=80" alt="Shopify Store Design" onerror="this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80'"/>
 <div class="vflip-front-label"><h3>Shopify Store Design</h3></div>
+<span class="svc-flip-hint">Click to explore →</span>
 </div>
 <div class="vflip-back">
 <h3>Shopify Store Design</h3>
-<p>Conversion-focused stores with custom themes, fast checkout flows, and brand-matched design that turns visitors into customers.</p>
-<div class="vflip-tags"><span class="card-tag">Shopify</span><span class="card-tag">Design</span></div>
-<a href="contact.html">Get Started</a>
+<p>Conversion-focused Shopify stores with custom themes, fast checkout flows, branded product pages, and mobile-first design that turns every visitor into a paying customer.</p>
+<div class="vflip-tags"><span class="card-tag">Shopify</span><span class="card-tag">Custom Theme</span><span class="card-tag">Checkout</span></div>
+<a href="#" class="btn btn-primary" style="font-size:.8rem;padding:8px 18px;" onclick="event.stopPropagation();openModal('Shopify Store Design')">Get Started →</a>
+<button class="svc-back-link" onclick="event.stopPropagation();flipBack(this)">← Flip Back</button>
 </div>
 </div>
 </div>
-<div class="vflip-card">
+
+<!-- 2. WordPress / WooCommerce -->
+<div class="vflip-card" onclick="toggleFlip(this)">
 <div class="vflip-inner">
 <div class="vflip-front">
-<img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=600&q=80" alt="WordPress / WooCommerce"/>
+<img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=600&q=80" alt="WordPress / WooCommerce" onerror="this.src='https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=600&q=80'"/>
 <div class="vflip-front-label"><h3>WordPress / WooCommerce</h3></div>
+<span class="svc-flip-hint">Click to explore →</span>
 </div>
 <div class="vflip-back">
 <h3>WordPress / WooCommerce</h3>
-<p>Flexible WooCommerce stores giving you full editorial control with powerful ecommerce built in. Perfect for content-rich brands.</p>
-<div class="vflip-tags"><span class="card-tag">WordPress</span><span class="card-tag">WooCommerce</span></div>
-<a href="contact.html">Get Started</a>
+<p>Flexible WooCommerce stores giving you full editorial control with powerful ecommerce built in. Perfect for content-rich brands that need a blog alongside their shop.</p>
+<div class="vflip-tags"><span class="card-tag">WordPress</span><span class="card-tag">WooCommerce</span><span class="card-tag">CMS</span></div>
+<a href="#" class="btn btn-primary" style="font-size:.8rem;padding:8px 18px;" onclick="event.stopPropagation();openModal('WordPress / WooCommerce')">Get Started →</a>
+<button class="svc-back-link" onclick="event.stopPropagation();flipBack(this)">← Flip Back</button>
 </div>
 </div>
 </div>
-<div class="vflip-card">
+
+<!-- 3. Wix Store Design -->
+<div class="vflip-card" onclick="toggleFlip(this)">
 <div class="vflip-inner">
 <div class="vflip-front">
-<img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=600&q=80" alt="Wix Store Design"/>
+<img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=600&q=80" alt="Wix Store Design" onerror="this.src='https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=600&q=80'"/>
 <div class="vflip-front-label"><h3>Wix Store Design</h3></div>
+<span class="svc-flip-hint">Click to explore →</span>
 </div>
 <div class="vflip-back">
 <h3>Wix Store Design</h3>
-<p>Polished Wix storefronts built for speed and style. Launch-ready without compromising on quality or user experience.</p>
-<div class="vflip-tags"><span class="card-tag">Wix</span><span class="card-tag">Design</span></div>
-<a href="contact.html">Get Started</a>
+<p>Polished Wix storefronts built for speed and style. Launch-ready without compromising on quality or user experience — drag, drop, and sell from day one.</p>
+<div class="vflip-tags"><span class="card-tag">Wix</span><span class="card-tag">Store Design</span><span class="card-tag">Launch</span></div>
+<a href="#" class="btn btn-primary" style="font-size:.8rem;padding:8px 18px;" onclick="event.stopPropagation();openModal('Wix Store Design')">Get Started →</a>
+<button class="svc-back-link" onclick="event.stopPropagation();flipBack(this)">← Flip Back</button>
 </div>
 </div>
 </div>
-<div class="vflip-card">
+
+<!-- 4. Shopify + Webflow -->
+<div class="vflip-card" onclick="toggleFlip(this)">
 <div class="vflip-inner">
 <div class="vflip-front">
-<img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=600&q=80" alt="Webflow Development"/>
-<div class="vflip-front-label"><h3>Webflow Development</h3></div>
+<img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=600&q=80" alt="Shopify + Webflow" onerror="this.src='https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=600&q=80'"/>
+<div class="vflip-front-label"><h3>Shopify + Webflow</h3></div>
+<span class="svc-flip-hint">Click to explore →</span>
 </div>
 <div class="vflip-back">
-<h3>Webflow Development</h3>
-<p>Pixel-perfect design freedom in Webflow, built for brands that want to stand out visually and have complete control.</p>
-<div class="vflip-tags"><span class="card-tag">Webflow</span><span class="card-tag">Development</span></div>
-<a href="contact.html">Get Started</a>
+<h3>Shopify + Webflow</h3>
+<p>Webflow's pixel-perfect design freedom layered on top of Shopify's proven commerce engine. Get the best of both: stunning visuals and bulletproof selling power.</p>
+<div class="vflip-tags"><span class="card-tag">Webflow</span><span class="card-tag">Shopify</span><span class="card-tag">Design</span></div>
+<a href="#" class="btn btn-primary" style="font-size:.8rem;padding:8px 18px;" onclick="event.stopPropagation();openModal('Shopify + Webflow')">Get Started →</a>
+<button class="svc-back-link" onclick="event.stopPropagation();flipBack(this)">← Flip Back</button>
 </div>
 </div>
 </div>
-<div class="vflip-card">
+
+<!-- 5. Product Research -->
+<div class="vflip-card" onclick="toggleFlip(this)">
 <div class="vflip-inner">
 <div class="vflip-front">
-<img src="https://images.unsplash.com/photo-1433190152045-5a94184895da?auto=format&fit=crop&w=600&q=80" alt="Product Research"/>
+<img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Product Research" onerror="this.src='https://images.unsplash.com/photo-1433190152045-5a94184895da?auto=format&fit=crop&w=600&q=80'"/>
 <div class="vflip-front-label"><h3>Product Research</h3></div>
+<span class="svc-flip-hint">Click to explore →</span>
 </div>
 <div class="vflip-back">
 <h3>Product Research</h3>
-<p>Data-driven research to identify winning products with real demand before you invest a dollar. Smart market analysis.</p>
-<div class="vflip-tags"><span class="card-tag">Research</span><span class="card-tag">Strategy</span></div>
-<a href="contact.html">Get Started</a>
+<p>Data-driven research to identify winning products with real market demand before you invest a dollar. Competitor analysis, trend spotting, and supplier sourcing included.</p>
+<div class="vflip-tags"><span class="card-tag">Research</span><span class="card-tag">Data</span><span class="card-tag">Strategy</span></div>
+<a href="#" class="btn btn-primary" style="font-size:.8rem;padding:8px 18px;" onclick="event.stopPropagation();openModal('Product Research')">Get Started →</a>
+<button class="svc-back-link" onclick="event.stopPropagation();flipBack(this)">← Flip Back</button>
 </div>
 </div>
 </div>
-<div class="vflip-card">
+
+<!-- 6. Website Migration -->
+<div class="vflip-card" onclick="toggleFlip(this)">
 <div class="vflip-inner">
 <div class="vflip-front">
-<img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=600&q=80" alt="Website Migration"/>
+<img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=600&q=80" alt="Website Migration" onerror="this.src='https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=600&q=80'"/>
 <div class="vflip-front-label"><h3>Website Migration</h3></div>
+<span class="svc-flip-hint">Click to explore →</span>
 </div>
 <div class="vflip-back">
 <h3>Website Migration</h3>
-<p>Smooth platform migrations that keep your products, customers, SEO rankings and momentum intact. Zero downtime.</p>
-<div class="vflip-tags"><span class="card-tag">Migration</span><span class="card-tag">Technical</span></div>
-<a href="contact.html">Get Started</a>
+<p>Smooth platform migrations that keep your products, customers, SEO rankings, and momentum intact. Move from any platform to Shopify, WooCommerce or Wix with zero downtime.</p>
+<div class="vflip-tags"><span class="card-tag">Migration</span><span class="card-tag">Zero Downtime</span><span class="card-tag">SEO Safe</span></div>
+<a href="#" class="btn btn-primary" style="font-size:.8rem;padding:8px 18px;" onclick="event.stopPropagation();openModal('Website Migration')">Get Started →</a>
+<button class="svc-back-link" onclick="event.stopPropagation();flipBack(this)">← Flip Back</button>
 </div>
 </div>
 </div>
-<div class="vflip-card">
+
+<!-- 7. SEO Optimization -->
+<div class="vflip-card" onclick="toggleFlip(this)">
 <div class="vflip-inner">
 <div class="vflip-front">
-<img src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&w=600&q=80" alt="SEO Optimization"/>
+<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="SEO Optimization" onerror="this.src='https://images.unsplash.com/photo-1562577309-4932fdd64cd1?auto=format&fit=crop&w=600&q=80'"/>
 <div class="vflip-front-label"><h3>SEO Optimization</h3></div>
+<span class="svc-flip-hint">Click to explore →</span>
 </div>
 <div class="vflip-back">
 <h3>SEO Optimization</h3>
-<p>On-page and technical SEO that gets your store found, and keeps it ranking above the competition. Organic growth.</p>
-<div class="vflip-tags"><span class="card-tag">SEO</span><span class="card-tag">Marketing</span></div>
-<a href="contact.html">Get Started</a>
+<p>On-page and technical SEO that gets your store found on Google and keeps it ranking above competitors. Keyword research, meta optimization, site speed, and structured data.</p>
+<div class="vflip-tags"><span class="card-tag">SEO</span><span class="card-tag">Google</span><span class="card-tag">Rankings</span></div>
+<a href="#" class="btn btn-primary" style="font-size:.8rem;padding:8px 18px;" onclick="event.stopPropagation();openModal('SEO Optimization')">Get Started →</a>
+<button class="svc-back-link" onclick="event.stopPropagation();flipBack(this)">← Flip Back</button>
 </div>
 </div>
 </div>
-<div class="vflip-card">
+
+<!-- 8. Google My Business -->
+<div class="vflip-card" onclick="toggleFlip(this)">
 <div class="vflip-inner">
 <div class="vflip-front">
-<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80" alt="Google My Business"/>
+<img src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&w=600&q=80" alt="Google My Business" onerror="this.src='https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80'"/>
 <div class="vflip-front-label"><h3>Google My Business Setup</h3></div>
+<span class="svc-flip-hint">Click to explore →</span>
 </div>
 <div class="vflip-back">
 <h3>Google My Business Setup</h3>
-<p>Full GMB setup and optimization so local customers can find, trust and choose your business first. Local SEO done right.</p>
-<div class="vflip-tags"><span class="card-tag">GMB</span><span class="card-tag">Local SEO</span></div>
-<a href="contact.html">Get Started</a>
+<p>Full GMB setup and optimization so local customers can find, trust, and choose your business first. Profile, photos, reviews strategy, posts, and local SEO all handled for you.</p>
+<div class="vflip-tags"><span class="card-tag">GMB</span><span class="card-tag">Local SEO</span><span class="card-tag">Google Maps</span></div>
+<a href="#" class="btn btn-primary" style="font-size:.8rem;padding:8px 18px;" onclick="event.stopPropagation();openModal('Google My Business Setup')">Get Started →</a>
+<button class="svc-back-link" onclick="event.stopPropagation();flipBack(this)">← Flip Back</button>
 </div>
 </div>
 </div>
+
 </div>
 </div>
 </section>
@@ -215,7 +357,7 @@
 <p style="margin-bottom: 2rem;">Let's talk about your project and find the perfect solution.</p>
 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
 <a class="btn btn-primary" href="https://wa.me/message/BYC7YFBUX4QGG1" target="_blank">Chat on WhatsApp</a>
-<a class="btn btn-secondary" href="contact.html">Contact Me</a>
+<a class="btn btn-secondary" href="#" onclick="openModal('General Enquiry')">Contact Me</a>
 </div>
 </section>
 <!-- FOOTER -->
@@ -248,7 +390,7 @@
 <span class="tooltip">WhatsApp</span>
 </a>
 <a class="social-icon" href="mailto:dewaynehadden11@gmail.com">
-<span>📧</span>
+<img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRUE0MzM1IiByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+R21haWw8L3RpdGxlPjxwYXRoIGQ9Ik0yNCA1LjQ1N3YxMy45MDljMCAuOTA0LS43MzIgMS42MzYtMS42MzYgMS42MzZoLTMuODE5VjExLjczTDEyIDE2LjY0bC02LjU0NS00LjkxdjkuMjczSDEuNjM2QTEuNjM2IDEuNjM2IDAgMCAxIDAgMTkuMzY2VjUuNDU3YzAtMi4wMjMgMi4zMDktMy4xNzggMy45MjctMS45NjRMNS40NTUgNC42NCAxMiA5LjU0OGw2LjU0NS00LjkxMCAxLjUyOC0xLjE0NUMyMS42OSAyLjI4IDI0IDMuNDM0IDI0IDUuNDU3eiIvPjwvc3ZnPg==" class="social-icon-img" alt="Gmail" style="filter:drop-shadow(0 0 6px #EA433588);"/>
 <span class="tooltip">Email</span>
 </a>
 <a class="social-icon" href="https://www.facebook.com/share/18wLHDgpsC/" target="_blank">
@@ -280,8 +422,103 @@
 </div>
 </div>
 </footer>
+
+<!-- CONTACT MODAL -->
+<div id="contactModal" class="svc-modal-overlay" onclick="overlayClose(event)">
+<div class="svc-modal">
+<button class="svc-modal-close" onclick="closeModal()">✕</button>
+<h3 class="svc-modal-title">Let's Work Together</h3>
+<div id="modalServiceBadge" class="svc-modal-service">Shopify Store Design</div>
+<p class="svc-modal-sub">Choose how you'd like to reach me:</p>
+
+<div class="svc-quick-btns">
+  <a href="https://wa.me/message/BYC7YFBUX4QGG1" target="_blank" class="svc-quick-btn wa">
+    <img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMjVEMzY2IiByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+d2hhdHNhcHA8L3RpdGxlPjxwYXRoIGQ9Ik0xNy40NzIgMTQuMzgyYy0uMjk3LS4xNDktMS43NTgtLjg2Ny0yLjAzLS45NjctLjI3My0uMDk5LS40NzEtLjE0OC0uNjcuMTUtLjE5Ny4yOTctLjc2Ny45NjYtLjk0IDEuMTY0LS4xNzMuMTk5LS4zNDcuMjIzLS42NDQuMDc1LS4yOTctLjE1LTEuMjU1LS40NjMtMi4zOS0xLjQ3NS0uODgzLS43ODgtMS40OC0xLjc2MS0xLjY1My0yLjA1OS0uMTczLS4yOTctLjAxOC0uNDU4LjEzLS42MDYuMTM0LS4xMzMuMjk4LS4zNDcuNDQ2LS41Mi4xNDktLjE3NC4xOTgtLjI5OC4yOTgtLjQ5Ny4wOTktLjE5OC4wNS0uMzcxLS4wMjUtLjUyLS4wNzUtLjE0OS0uNjY5LTEuNjEyLS45MTYtMi4yMDctLjI0Mi0uNTc5LS40ODctLjUtLjY2OS0uNTEtLjE3My0uMDA4LS4zNzEtLjAxLS41Ny0uMDEtLjE5OCAwLS41Mi4wNzQtLjc5Mi4zNzItLjI3Mi4yOTctMS4wNCAxLjAxNi0xLjA0IDIuNDc5IDAgMS40NjIgMS4wNjUgMi44NzUgMS4yMTMgMy4wNzQuMTQ5LjE5OCAyLjA5NiAzLjIgNS4wNzcgNC40ODcuNzA5LjMwNiAxLjI2Mi40ODkgMS42OTQuNjI1LjcxMi4yMjcgMS4zNi4xOTUgMS44NzEuMTE4LjU3MS0uMDg1IDEuNzU4LS43MTkgMi4wMDYtMS40MTMuMjQ4LS42OTQuMjQ4LTEuMjg5LjE3My0xLjQxMy0uMDc0LS4xMjQtLjI3Mi0uMTk4LS41Ny0uMzQ3bS01LjQyMSA3LjQwM2gtLjAwNGE5Ljg3IDkuODcgMCAwMS01LjAzMS0xLjM3OGwtLjM2MS0uMjE0LTMuNzQxLjk4Mi45OTgtMy42NDgtLjIzNS0uMzc0YTkuODYgOS44NiAwIDAxLTEuNTEtNS4yNmMuMDAxLTUuNDUgNC40MzYtOS44ODQgOS44ODgtOS44ODQgMi42NCAwIDUuMTIyIDEuMDMgNi45ODggMi44OThhOS44MjUgOS44MjUgMCAwMTIuODkzIDYuOTk0Yy0uMDAzIDUuNDUtNC40MzcgOS44ODQtOS44ODUgOS44ODRtOC40MTMtMTguMjk3QTExLjgxNSAxMS44MTUgMCAwMDEyLjA1IDBDNS40OTUgMCAuMTYgNS4zMzUuMTU3IDExLjg5MmMwIDIuMDk2LjU0NyA0LjE0MiAxLjU4OCA1Ljk0NUwuMDU3IDI0bDYuMzA1LTEuNjU0YTExLjg4MiAxMS44ODIgMCAwMDUuNjgzIDEuNDQ4aC4wMDVjNi41NTQgMCAxMS44OS01LjMzNSAxMS44OTMtMTEuODkzYTExLjgyMSAxMS44MjEgMCAwMC0zLjQ4LTguNDEzWiIvPjwvc3ZnPg==" alt="WhatsApp"/>
+    WhatsApp
+  </a>
+  <a href="https://www.upwork.com/freelancers/~01d8f8c1ff8dccffea" target="_blank" class="svc-quick-btn up">
+    <img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjNkZEQTQ0IiByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+dXB3b3JrPC90aXRsZT48cGF0aCBkPSJNMTguNTYxIDEzLjE1OGMtMS4xMDIgMC0yLjEzNS0uNDY3LTMuMDc0LTEuMjI3bC4yMjgtMS4wNzYuMDA4LS4wNDJjLjIwNy0xLjE0My44NDktMy4wNiAyLjgzOS0zLjA2IDEuNDkyIDAgMi43MDMgMS4yMTIgMi43MDMgMi43MDMtLjAwMSAxLjQ4OS0xLjIxMiAyLjcwMi0yLjcwNCAyLjcwMnptMC04LjE0Yy0yLjUzOSAwLTQuNTEgMS42NDktNS4zMSA0LjM2Ni0xLjIyLTEuODM0LTIuMTQ4LTQuMDM2LTIuNjg3LTUuODkySDcuODI4djcuMTEyYy0uMDAyIDEuNDA2LTEuMTQxIDIuNTQ2LTIuNTQ3IDIuNTQ4LTEuNDA1LS4wMDItMi41NDMtMS4xNDMtMi41NDUtMi41NDhWMy40OTJIMHY3LjExMmMwIDIuOTE0IDIuMzcgNS4zMDMgNS4yODEgNS4zMDMgMi45MTMgMCA1LjI4My0yLjM4OSA1LjI4My01LjMwM3YtMS4xOWMuNTI5IDEuMTA3IDEuMTgyIDIuMjI5IDEuOTc0IDMuMjIxbC0xLjY3MyA3Ljg3M2gyLjc5N2wxLjIxMy01LjcxYzEuMDYzLjY3OSAyLjI4NSAxLjEwOSAzLjY4NiAxLjEwOSAzIDAgNS40MzktMi40NTIgNS40MzktNS40NSAwLTMtMi40MzktNS40MzktNS40MzktNS40Mzl6Ii8+PC9zdmc+" alt="Upwork"/>
+    Upwork
+  </a>
+  <a href="https://www.fiverr.com/emiloloruntinmy" target="_blank" class="svc-quick-btn fv">
+    <img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMURCRjczIiByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+Zml2ZXJyPC90aXRsZT48cGF0aCBkPSJNMjMuMDA0IDE1LjU4OGEuOTk1Ljk5NSAwIDEgMCAuMDAyLTEuOTkuOTk1Ljk5NSAwIDAgMC0uMDAyIDEuOTl6bS0uOTk2LTMuNzA1aC0uODVjLS41NDYgMC0uODQuNDEtLjg0IDEuMDkydjIuNDY2aC0xLjYxdi0zLjU1OGgtLjY4NGMtLjU0NyAwLS44NC40MS0uODQgMS4wOTJ2Mi40NjZoLTEuNjF2LTQuODc0aDEuNjF2Ljc0Yy4yNjQtLjU3NC42MjYtLjc0IDEuMTYzLS43NGgxLjk3MnYuNzRjLjI2NC0uNTc0LjYyNS0uNzQgMS4xNjItLjc0aC41Mjd2MS4zMTZ6bS02Ljc4NiAxLjUwMWgtMy4zNTljLjA4OC41NDYuNDMuODU4IDEuMDA2Ljg1OC40MyAwIC43MzItLjE3NS44My0uNDg3bDEuNDI1LjRjLS4zNTEuODQ4LTEuMjIgMS4zNjQtMi4yNTUgMS4zNjQtMS43NDggMC0yLjU0OS0xLjM1NS0yLjU0OS0yLjUxNSAwLTEuMTQuNzAzLTIuNTA1IDIuNDUtMi41MDUgMS44NTYgMCAyLjQ3MSAxLjM4NCAyLjQ3MSAyLjQwOCAwIC4yMjQtLjAxLjM3LS4wMi40Nzd6bS0xLjU2Mi0uOTQ1Yy0uMDQtLjQyLS4zNDItLjgxLS44ODktLjgxLS41MDggMC0uODEuMjI1LS45MDguODFoMS43OTd6TTcuNTA4IDE1LjQ0aDEuNDE2bDEuNzY3LTQuODc0aC0xLjYybC0uODYgMi44MzctLjg3OC0yLjgzN0g1LjcybDEuNzg3IDQuODc0em0tNi42IDBIMi41MXYtMy41NThoMS41MjR2My41NThoMS41OTF2LTQuODc0SDIuNTF2LS4zMDJjMC0uMzMyLjIzNS0uNTM2LjYwNi0uNTM2aC45MThWOC40MTJIMi44NWMtMS4xNjIgMC0xLjk0My43MTItMS45NDMgMS43NTV2LjRIMHYxLjMxNmguOTA4djMuNTU4eiIvPjwvc3ZnPg==" alt="Fiverr"/>
+    Fiverr
+  </a>
+  <a href="mailto:dewaynehadden11@gmail.com" class="svc-quick-btn gm">
+    <img src="data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRUE0MzM1IiByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48dGl0bGU+R21haWw8L3RpdGxlPjxwYXRoIGQ9Ik0yNCA1LjQ1N3YxMy45MDljMCAuOTA0LS43MzIgMS42MzYtMS42MzYgMS42MzZoLTMuODE5VjExLjczTDEyIDE2LjY0bC02LjU0NS00LjkxdjkuMjczSDEuNjM2QTEuNjM2IDEuNjM2IDAgMCAxIDAgMTkuMzY2VjUuNDU3YzAtMi4wMjMgMi4zMDktMy4xNzggMy45MjctMS45NjRMNS40NTUgNC42NCAxMiA5LjU0OGw2LjU0NS00LjkxMCAxLjUyOC0xLjE0NUMyMS42OSAyLjI4IDI0IDMuNDM0IDI0IDUuNDU3eiIvPjwvc3ZnPg==" alt="Gmail"/>
+    Gmail
+  </a>
+</div>
+
+<div class="svc-divider"><span>OR send me a message below</span></div>
+
+<form class="svc-form" onsubmit="submitForm(event)">
+  <div class="svc-form-row">
+    <input type="text" name="name" placeholder="Your Full Name" required/>
+    <input type="email" name="email" placeholder="your@email.com" required/>
+  </div>
+  <input type="text" id="formServiceField" name="service" placeholder="Service needed" readonly style="cursor:default;"/>
+  <select name="budget" required>
+    <option value="" disabled selected>Select budget range...</option>
+    <option>Under $100</option>
+    <option>$100 - $500</option>
+    <option>$500 - $1,000</option>
+    <option>$1,000 - $3,000</option>
+    <option>$3,000+</option>
+  </select>
+  <textarea name="message" placeholder="Tell me about your project, goals, and any specific requirements..." rows="4"></textarea>
+  <button type="submit" class="btn btn-primary">Send Message →</button>
+</form>
+</div>
+</div>
+
 <!-- FLOATING WHATSAPP BUTTON -->
 <a class="whatsapp-float" href="https://wa.me/message/BYC7YFBUX4QGG1" target="_blank" title="Chat on WhatsApp"></a>
 <script src="animations.js"></script>
+<script>
+// ── Flip toggle ──
+function toggleFlip(card) {
+  card.classList.toggle('flipped');
+}
+function flipBack(btn) {
+  btn.closest('.vflip-card').classList.remove('flipped');
+}
+
+// ── Modal ──
+function openModal(serviceName) {
+  document.getElementById('modalServiceBadge').textContent = serviceName;
+  document.getElementById('formServiceField').value = serviceName;
+  document.getElementById('contactModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('contactModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function overlayClose(e) {
+  if (e.target === document.getElementById('contactModal')) closeModal();
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+// ── Form submit via mailto ──
+function submitForm(e) {
+  e.preventDefault();
+  const f = e.target;
+  const name    = f.name.value;
+  const email   = f.email.value;
+  const service = f.service.value;
+  const budget  = f.budget.value;
+  const message = f.message.value;
+  const body = encodeURIComponent(
+    'Name: ' + name + '\nEmail: ' + email +
+    '\nService: ' + service + '\nBudget: ' + budget +
+    '\n\nMessage:\n' + message
+  );
+  window.location.href = 'mailto:dewaynehadden11@gmail.com?subject=' +
+    encodeURIComponent('New Project Enquiry - ' + service) + '&body=' + body;
+}
+</script>
 </body>
 </html>
