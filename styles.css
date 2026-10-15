@@ -2455,3 +2455,4 @@ body > section.section:nth-of-type(even):not(.cta-section):not(.consult-section)
   box-shadow: 0 0 0 100vmax #fffdf9;
   clip-path: inset(0 -100vmax);
 }
+.team-photo img { object-position: center 20%; }
