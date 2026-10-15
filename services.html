@@ -353,13 +353,15 @@
 </div>
 </div>
 </section>
-<!-- CTA SECTION -->
-<section class="section" style="background-color: var(--secondary-dark); border-radius: 12px; text-align: center;">
+<!-- CONSULTATION CTA SECTION -->
+<section class="section consult-section">
+<div class="consult-card">
 <h2>Not sure which service you need?</h2>
-<p style="margin-bottom: 2rem;">Let's talk about your project and find the perfect solution.</p>
-<div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-<a class="btn btn-primary" href="https://wa.me/message/BYC7YFBUX4QGG1" target="_blank">Chat on WhatsApp</a>
-<a class="btn btn-secondary" href="#" onclick="openModal('General Enquiry')">Contact Me</a>
+<p>Let's talk it through. I'll recommend exactly what fits your goals and budget. No hard sell.</p>
+<div class="consult-actions">
+<a class="btn btn-primary" href="#consultation" onclick="event.preventDefault();openModal('Free Consultation')">Book a Free Consultation →</a>
+<a class="btn btn-secondary" href="https://wa.me/message/BYC7YFBUX4QGG1" target="_blank" rel="noopener">Ask on WhatsApp</a>
+</div>
 </div>
 </section>
 <!-- FOOTER -->
@@ -462,6 +464,7 @@
   <input type="text" id="formServiceField" name="service" placeholder="Service needed" readonly style="cursor:default;"/>
   <select name="budget" required>
     <option value="" disabled selected>Select budget range...</option>
+    <option>Not sure yet</option>
     <option>Under $100</option>
     <option>$100 - $500</option>
     <option>$500 - $1,000</option>
@@ -500,6 +503,7 @@ function closeModal() {
 function overlayClose(e) {
   if (e.target === document.getElementById('contactModal')) closeModal();
 }
+if (location.hash === '#consultation') openModal('Free Consultation');
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') closeModal();
 });

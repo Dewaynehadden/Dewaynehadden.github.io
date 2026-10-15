@@ -2231,3 +2231,29 @@ footer {
 @media (max-width: 768px) {
   .about-steps { grid-template-columns: 1fr; gap: 1.75rem; }
 }
+
+/* ===========================
+   SERVICES: CONSULTATION CTA
+   =========================== */
+.consult-card {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3.5rem 2rem;
+  text-align: center;
+  border-radius: 24px;
+  background: linear-gradient(135deg, var(--secondary-dark), #1a2238);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.08);
+}
+.consult-card h2 { margin-bottom: 1rem; }
+.consult-card p {
+  color: var(--text-secondary);
+  max-width: 460px;
+  margin: 0 auto 2rem;
+  line-height: 1.8;
+}
+.consult-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+@media (max-width: 480px) {
+  .consult-card { padding: 2.5rem 1.25rem; border-radius: 18px; }
+  .consult-actions .btn { width: 100%; text-align: center; }
+}
