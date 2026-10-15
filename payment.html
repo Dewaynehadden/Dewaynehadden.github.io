@@ -245,7 +245,7 @@ var PAYMENT = {
   paypalMe: '',           // PayPal.me username, e.g. 'bobbydev' for paypal.me/bobbydev
   cryptoNetwork: '',      // e.g. 'USDT (TRC20)'
   cryptoWallet: '',       // wallet address for the network above
-  whatsappNumber: ''      // e.g. '2348012345678' (no +). Lets the deposit details arrive pre-typed
+  whatsappNumber: '2348139499140' // (no +). Lets the deposit details arrive pre-typed
 };
 var WHATSAPP_LINK = 'https://wa.me/message/BYC7YFBUX4QGG1';
 
@@ -323,7 +323,7 @@ var WHATSAPP_LINK = 'https://wa.me/message/BYC7YFBUX4QGG1';
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var name = form.name.value, email = form.email.value, amount = +form.amount.value;
-    var summary = 'Hi Bobby, I\'d like to pay a $' + amount + ' project deposit by ' + { card: 'card/bank transfer', paypal: 'PayPal', crypto: 'crypto' }[method] + '.\nName: ' + name + '\nEmail: ' + email;
+    var summary = 'Hi BobbyDev Agency, I\'d like to pay a $' + amount + ' project deposit by ' + { card: 'card/bank transfer', paypal: 'PayPal', crypto: 'crypto' }[method] + '.\nName: ' + name + '\nEmail: ' + email;
     if (method === 'card' && PAYMENT.paystackPublicKey && window.PaystackPop) {
       var ngn = PAYMENT.paystackCurrency === 'NGN';
       new PaystackPop().newTransaction({
