@@ -2418,3 +2418,40 @@ nav .nav-cta .btn-primary:hover { background: #f6efe3; color: var(--accent-dark)
 nav .logo-text, nav .logo span.logo-text { color: #fff; }
 nav .logo-text .logo-accent, nav .logo span.logo-accent, nav .logo span span { color: #dfe2ff; }
 nav .logo-accent { color: #fff !important; opacity: .85; }
+
+/* ===========================
+   TOP BAR (above the header)
+   =========================== */
+.topbar { background: linear-gradient(90deg, #1d2440 0%, #2e4a8a 60%, #4f7fd6 100%); color: rgba(255,255,255,.88); font-size: .82rem; }
+.topbar-inner { max-width: 1400px; margin: 0 auto; padding: 8px 2rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.topbar a { color: rgba(255,255,255,.88); font-weight: 500; }
+.topbar a:hover { color: #fff; text-decoration: underline; }
+.topbar-left, .topbar-right { display: flex; align-items: center; gap: 1.25rem; }
+.topbar-status { display: inline-flex; align-items: center; gap: 6px; }
+.topbar-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 0 3px rgba(74,222,128,.25); }
+@media (max-width: 768px) {
+  .topbar-left a, .topbar-right a:not(:first-child) { display: none; }
+  .topbar-inner { padding: 7px 1rem; }
+}
+
+/* ===========================
+   NAVY FOOTER
+   =========================== */
+footer { background: linear-gradient(160deg, #1d2440 0%, #24346b 60%, #2e4a8a 100%); border-top: 0; color: rgba(255,255,255,.8); }
+footer .footer-col h4 { color: #fff; }
+footer .footer-links a, footer p, footer .footer-bottom { color: rgba(255,255,255,.78) !important; }
+footer .footer-links a:hover { color: #fff !important; }
+footer .footer-logo-text { color: #fff; }
+footer .footer-logo-accent { color: #b9c0ff; }
+footer .footer-top { border-bottom-color: rgba(255,255,255,.14); }
+footer .social-icon { background: #fff; border-color: transparent; }
+footer .social-icon:hover { box-shadow: 0 0 0 3px rgba(255,255,255,.35); }
+
+/* ===========================
+   SECTION RHYTHM: alternate cream / white bands
+   =========================== */
+body > section.section:nth-of-type(even):not(.cta-section):not(.consult-section):not([style*="background"]) {
+  background: #fffdf9;
+  box-shadow: 0 0 0 100vmax #fffdf9;
+  clip-path: inset(0 -100vmax);
+}
