@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Savory Kitchen | Restaurant Demo by BobbyDev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --brand: #e8833a; --dark: #1f130c; --cream: #fbf3ea; --text: #3a2a20; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; color: var(--text); background: #fff; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; background: #d9c3ad; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  header { position: absolute; top: 0; left: 0; right: 0; z-index: 10; color: #fff; }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 84px; }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; }
+  .logo span { color: var(--brand); }
+  .links { display: flex; gap: 32px; font-weight: 500; }
+  .links a:hover { color: var(--brand); }
+  .btn { display: inline-block; background: var(--brand); color: #fff; padding: 13px 28px; border-radius: 40px; font-weight: 600; border: none; cursor: pointer; font-size: .95rem; }
+  .btn:hover { background: #d0702a; }
+  .btn-ghost { background: transparent; border: 2px solid #fff; }
+  .burger { display: none; background: none; border: 0; color: #fff; font-size: 1.6rem; cursor: pointer; }
+  .hero { position: relative; height: 640px; color: #fff; display: flex; align-items: center; background: var(--dark); }
+  .hero img { position: absolute; inset: 0; }
+  .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,10,4,.85), rgba(20,10,4,.25)); }
+  .hero .wrap { position: relative; z-index: 2; width: 100%; }
+  .eyebrow { color: var(--brand); text-transform: uppercase; letter-spacing: .2em; font-weight: 600; font-size: .8rem; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; line-height: 1.05; margin: 16px 0 20px; max-width: 620px; }
+  .hero p { max-width: 480px; opacity: .9; line-height: 1.7; margin-bottom: 32px; }
+  .hero .actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .info { background: var(--dark); color: #f4e4d4; }
+  .info .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; padding: 28px 24px; }
+  .info strong { display: block; color: var(--brand); margin-bottom: 4px; }
+  section { padding: 90px 0; }
+  .head { text-align: center; margin-bottom: 44px; }
+  .head h2 { font-family: 'Playfair Display', serif; font-size: 2.6rem; margin-top: 10px; }
+  .tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 36px; flex-wrap: wrap; }
+  .tab { padding: 10px 22px; border-radius: 30px; border: 1px solid #e6d5c4; background: #fff; cursor: pointer; font-weight: 600; color: var(--text); }
+  .tab.active { background: var(--brand); color: #fff; border-color: var(--brand); }
+  .menu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .dish { background: var(--cream); border-radius: 18px; overflow: hidden; }
+  .dish .ph { height: 210px; }
+  .dish .body { padding: 20px; }
+  .dish .row { display: flex; justify-content: space-between; align-items: baseline; }
+  .dish h3 { font-family: 'Playfair Display', serif; font-size: 1.25rem; }
+  .price { color: var(--brand); font-weight: 700; font-size: 1.1rem; }
+  .dish p { font-size: .9rem; margin: 8px 0 16px; opacity: .8; line-height: 1.6; }
+  .add { background: var(--dark); color: #fff; border: 0; padding: 9px 18px; border-radius: 20px; cursor: pointer; font-weight: 600; }
+  .about { background: var(--cream); }
+  .about .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .about .ph { height: 440px; border-radius: 24px; overflow: hidden; }
+  .about h2 { font-family: 'Playfair Display', serif; font-size: 2.4rem; margin: 10px 0 18px; }
+  .about p { line-height: 1.8; margin-bottom: 16px; }
+  .reserve { background: var(--dark); color: #fff; }
+  .reserve form { display: grid; grid-template-columns: repeat(4, 1fr) auto; gap: 14px; max-width: 980px; margin: 0 auto; }
+  .reserve input, .reserve select { padding: 14px 16px; border-radius: 10px; border: 0; font: inherit; }
+  .reserve .done { text-align: center; color: var(--brand); font-weight: 600; margin-top: 18px; min-height: 1.4em; }
+  .cart { position: fixed; right: 22px; bottom: 22px; background: var(--brand); color: #fff; padding: 14px 20px; border-radius: 40px; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,.25); z-index: 20; }
+  footer { background: #140c07; color: #bfa995; text-align: center; padding: 30px 20px; font-size: .9rem; }
+  footer a { color: var(--brand); }
+  @media (max-width: 900px) {
+    .links, .nav > .btn { display: none; }
+    .burger { display: block; }
+    .links.open { display: flex; flex-direction: column; position: absolute; top: 84px; left: 0; right: 0; background: var(--dark); padding: 20px 24px; gap: 16px; }
+    .hero h1 { font-size: 2.6rem; }
+    .menu { grid-template-columns: 1fr 1fr; }
+    .about .wrap { grid-template-columns: 1fr; }
+    .reserve form { grid-template-columns: 1fr 1fr; }
+    .info .wrap { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) { .menu, .reserve form { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#">Savory<span>.</span></a>
+    <nav class="links" id="links">
+      <a href="#menu">Menu</a><a href="#about">About</a><a href="#reserve">Reservations</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="btn" href="#reserve">Book a Table</a>
+    <button class="burger" data-nav-toggle="#links" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80" alt="Restaurant dining room">
+  <div class="wrap">
+    <span class="eyebrow">Fine Dining · Since 2012</span>
+    <h1>Taste the Difference in Every Bite</h1>
+    <p>Seasonal ingredients, wood-fired flavours and a warm table waiting for you. Order online for delivery or reserve your evening with us.</p>
+    <div class="actions"><a class="btn" href="#reserve">Book a Table</a><a class="btn btn-ghost" href="#menu">View Menu</a></div>
+  </div>
+</section>
+
+<div class="info">
+  <div class="wrap">
+    <div><strong>Opening Hours</strong>Mon – Sun · 11:00 AM – 11:00 PM</div>
+    <div><strong>Location</strong>24 Harbour Road, Victoria Island</div>
+    <div><strong>Call Us</strong>+234 800 000 0000</div>
+  </div>
+</div>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">Our Menu</span><h2>Chef's Favourites</h2></div>
+    <div class="tabs">
+      <button class="tab active" data-filter="all">All</button>
+      <button class="tab" data-filter="mains">Mains</button>
+      <button class="tab" data-filter="pizza">Pizza</button>
+      <button class="tab" data-filter="healthy">Healthy</button>
+    </div>
+    <div class="menu" id="menuGrid">
+      <div class="dish" data-cat="mains"><div class="ph"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=700&q=80" alt="Grilled steak"></div><div class="body"><div class="row"><h3>Grilled Ribeye</h3><span class="price">$24</span></div><p>Char-grilled ribeye, roasted vegetables and garlic butter.</p><button class="add">Add to Order</button></div></div>
+      <div class="dish" data-cat="pizza"><div class="ph"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=700&q=80" alt="Pizza"></div><div class="body"><div class="row"><h3>Wood-Fired Pizza</h3><span class="price">$16</span></div><p>Hand-stretched dough, San Marzano tomato and fresh basil.</p><button class="add">Add to Order</button></div></div>
+      <div class="dish" data-cat="healthy"><div class="ph"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=700&q=80" alt="Salad bowl"></div><div class="body"><div class="row"><h3>Garden Bowl</h3><span class="price">$12</span></div><p>Quinoa, avocado, roasted chickpeas and citrus dressing.</p><button class="add">Add to Order</button></div></div>
+      <div class="dish" data-cat="mains"><div class="ph"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80" alt="Burger"></div><div class="body"><div class="row"><h3>Signature Burger</h3><span class="price">$14</span></div><p>Smashed beef patty, aged cheddar and house pickles.</p><button class="add">Add to Order</button></div></div>
+      <div class="dish" data-cat="pizza"><div class="ph"><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=700&q=80" alt="Pepperoni pizza"></div><div class="body"><div class="row"><h3>Pepperoni Classic</h3><span class="price">$17</span></div><p>Spicy pepperoni, mozzarella and oregano honey.</p><button class="add">Add to Order</button></div></div>
+      <div class="dish" data-cat="healthy"><div class="ph"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=700&q=80" alt="Healthy plate"></div><div class="body"><div class="row"><h3>Green Harvest</h3><span class="price">$11</span></div><p>Seasonal greens, grilled halloumi and toasted seeds.</p><button class="add">Add to Order</button></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="ph"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=80" alt="Plated dish"></div>
+    <div>
+      <span class="eyebrow">Our Story</span>
+      <h2>Cooked with passion, served with love</h2>
+      <p>Savory started as a small family kitchen and grew into the neighbourhood's favourite place to gather. Every dish is made fresh to order.</p>
+      <p>Whether it's a quick lunch, a family dinner or a private event, our team makes every visit feel special.</p>
+      <a class="btn" href="#reserve">Reserve Your Table</a>
+    </div>
+  </div>
+</section>
+
+<section class="reserve" id="reserve">
+  <div class="wrap">
+    <div class="head"><span class="eyebrow">Reservations</span><h2>Book a Table</h2></div>
+    <form id="reserveForm">
+      <input required placeholder="Your name">
+      <input required type="date" aria-label="Date">
+      <select aria-label="Time"><option>6:00 PM</option><option>7:00 PM</option><option>8:00 PM</option><option>9:00 PM</option></select>
+      <select aria-label="Guests"><option>2 guests</option><option>4 guests</option><option>6 guests</option><option>8+ guests</option></select>
+      <button class="btn" type="submit">Reserve</button>
+    </form>
+    <p class="done" id="reserveDone"></p>
+  </div>
+</section>
+
+<a class="cart" href="#menu" id="cart">🛒 Order (0)</a>
+
+<footer id="contact">© Savory Kitchen · Demo restaurant website designed &amp; built by <a href="../../index.html">BobbyDev</a></footer>
+
+<script src="../demo-common.js"></script>
+<script>
+  document.querySelectorAll('.tab').forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      document.querySelectorAll('.tab').forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      var f = tab.dataset.filter;
+      document.querySelectorAll('.dish').forEach(function (d) {
+        d.style.display = (f === 'all' || d.dataset.cat === f) ? '' : 'none';
+      });
+    });
+  });
+  var count = 0;
+  document.querySelectorAll('.add').forEach(function (b) {
+    b.addEventListener('click', function () { count++; document.getElementById('cart').textContent = '🛒 Order (' + count + ')'; });
+  });
+  document.getElementById('reserveForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('reserveDone').textContent = '✓ Table request received! We will confirm by SMS shortly.';
+  });
+</script>
+</body>
+</html>

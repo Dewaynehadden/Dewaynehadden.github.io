@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prime Estates | Real Estate Demo by BobbyDev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --brand: #0f9d8a; --ink: #0b2d2a; --muted: #5f7270; --bg: #f2f7f6; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Manrope', sans-serif; color: var(--ink); background: #fff; }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; background: #cfe3df; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  header { position: absolute; top: 0; left: 0; right: 0; z-index: 10; color: #fff; }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 84px; }
+  .logo { font-size: 1.5rem; font-weight: 800; }
+  .logo span { color: #6ee7d4; }
+  .links { display: flex; gap: 30px; font-weight: 600; }
+  .btn { display: inline-block; background: var(--brand); color: #fff; padding: 13px 24px; border-radius: 10px; font-weight: 700; border: 0; cursor: pointer; font: inherit; font-weight: 700; }
+  .btn-light { background: #fff; color: var(--ink); }
+  .burger { display: none; background: none; border: 0; color: #fff; font-size: 1.6rem; cursor: pointer; }
+  .hero { position: relative; height: 620px; display: flex; align-items: center; color: #fff; background: var(--ink); }
+  .hero img { position: absolute; inset: 0; }
+  .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5,25,22,.55), rgba(5,25,22,.75)); }
+  .hero .wrap { position: relative; z-index: 2; width: 100%; text-align: center; }
+  .hero h1 { font-size: 3.6rem; line-height: 1.1; margin-bottom: 16px; }
+  .hero p { opacity: .9; margin-bottom: 34px; font-size: 1.1rem; }
+  .finder { background: #fff; border-radius: 16px; padding: 14px; display: grid; grid-template-columns: auto 1.4fr 1fr 1fr auto; gap: 10px; max-width: 980px; margin: 0 auto; box-shadow: 0 20px 50px rgba(0,0,0,.25); }
+  .modes { display: flex; background: var(--bg); border-radius: 10px; padding: 4px; }
+  .mode { border: 0; background: transparent; padding: 10px 16px; border-radius: 8px; font: inherit; font-weight: 700; cursor: pointer; color: var(--muted); }
+  .mode.active { background: var(--brand); color: #fff; }
+  .finder input, .finder select { border: 1px solid #dfe9e7; border-radius: 10px; padding: 12px 14px; font: inherit; color: var(--ink); }
+  section { padding: 80px 0; }
+  .head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 34px; gap: 20px; flex-wrap: wrap; }
+  .eyebrow { color: var(--brand); font-weight: 800; text-transform: uppercase; letter-spacing: .16em; font-size: .78rem; }
+  .head h2 { font-size: 2.3rem; margin-top: 8px; }
+  .count { color: var(--muted); font-weight: 600; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+  .prop { border: 1px solid #e3eceb; border-radius: 18px; overflow: hidden; background: #fff; transition: box-shadow .2s; }
+  .prop:hover { box-shadow: 0 16px 36px rgba(11,45,42,.12); }
+  .prop .ph { height: 230px; position: relative; }
+  .tag { position: absolute; top: 14px; left: 14px; background: var(--brand); color: #fff; font-size: .72rem; font-weight: 800; padding: 6px 10px; border-radius: 8px; letter-spacing: .05em; }
+  .tag.rent { background: #2563eb; }
+  .fav { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border-radius: 50%; border: 0; background: #fff; cursor: pointer; font-size: 1.1rem; }
+  .prop .body { padding: 20px; }
+  .price { font-size: 1.45rem; font-weight: 800; }
+  .price small { font-size: .85rem; color: var(--muted); font-weight: 600; }
+  .prop h3 { font-size: 1.05rem; margin: 6px 0 4px; }
+  .addr { color: var(--muted); font-size: .9rem; }
+  .specs { display: flex; gap: 18px; border-top: 1px solid #e3eceb; margin-top: 16px; padding-top: 14px; font-size: .88rem; font-weight: 600; color: var(--muted); }
+  .why { background: var(--bg); }
+  .why .grid > div { background: #fff; border-radius: 18px; padding: 30px; }
+  .why .ico { width: 52px; height: 52px; border-radius: 14px; background: #d6f3ee; display: grid; place-items: center; font-size: 1.5rem; margin-bottom: 16px; }
+  .why h3 { margin-bottom: 8px; }
+  .why p { color: var(--muted); line-height: 1.7; }
+  .agents { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .agent { text-align: center; }
+  .agent .ph { height: 260px; border-radius: 18px; overflow: hidden; margin-bottom: 14px; }
+  .agent small { color: var(--muted); }
+  .cta { background: var(--ink); color: #fff; border-radius: 24px; padding: 54px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .cta h2 { font-size: 2.2rem; margin-bottom: 10px; }
+  .cta p { color: #b9d3cf; }
+  .cta form { display: grid; gap: 12px; }
+  .cta input { padding: 14px; border-radius: 10px; border: 0; font: inherit; }
+  .cta .done { color: #6ee7d4; font-weight: 700; min-height: 1.4em; }
+  footer { text-align: center; padding: 30px 20px; color: var(--muted); font-size: .9rem; }
+  footer a { color: var(--brand); font-weight: 700; }
+  @media (max-width: 960px) {
+    .links, .nav > .btn { display: none; }
+    .burger { display: block; }
+    .links.open { display: flex; flex-direction: column; position: absolute; top: 84px; left: 0; right: 0; background: var(--ink); padding: 20px 24px; gap: 16px; }
+    .hero h1 { font-size: 2.4rem; }
+    .finder { grid-template-columns: 1fr 1fr; }
+    .finder .modes, .finder input { grid-column: 1 / -1; }
+    .grid { grid-template-columns: 1fr 1fr; }
+    .agents { grid-template-columns: 1fr 1fr; }
+    .cta { grid-template-columns: 1fr; padding: 34px; }
+  }
+  @media (max-width: 600px) { .grid, .finder { grid-template-columns: 1fr; } .hero { height: 700px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#">Prime<span>Estates</span></a>
+    <nav class="links" id="links"><a href="#listings">Buy</a><a href="#listings">Rent</a><a href="#contact">Sell</a><a href="#agents">Agents</a></nav>
+    <a class="btn btn-light" href="#contact">List Your Property</a>
+    <button class="burger" data-nav-toggle="#links" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1800&q=80" alt="Modern house">
+  <div class="wrap">
+    <h1>Find a home you'll love</h1>
+    <p>Browse verified homes for sale and rent, with local agents ready to help.</p>
+    <form class="finder" id="finder" onsubmit="event.preventDefault()">
+      <div class="modes"><button type="button" class="mode active" data-mode="all">All</button><button type="button" class="mode" data-mode="sale">Buy</button><button type="button" class="mode" data-mode="rent">Rent</button></div>
+      <input placeholder="City, neighbourhood or ZIP" aria-label="Location">
+      <select id="beds" aria-label="Bedrooms"><option value="0">Any beds</option><option value="2">2+ beds</option><option value="3">3+ beds</option><option value="4">4+ beds</option></select>
+      <select aria-label="Property type"><option>Any type</option><option>House</option><option>Apartment</option><option>Villa</option></select>
+      <button class="btn" type="submit">Search</button>
+    </form>
+  </div>
+</section>
+
+<section id="listings">
+  <div class="wrap">
+    <div class="head"><div><span class="eyebrow">Featured Listings</span><h2>Homes for you</h2></div><span class="count" id="count">6 properties</span></div>
+    <div class="grid" id="grid">
+      <div class="prop" data-type="sale" data-beds="4"><div class="ph"><span class="tag">FOR SALE</span><button class="fav" aria-label="Save">♡</button><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=800&q=80" alt="Family house"></div><div class="body"><div class="price">$720,000</div><h3>Modern Family Home</h3><p class="addr">14 Palm Grove, Lekki Phase 1</p><div class="specs"><span>🛏 4 Beds</span><span>🛁 3 Baths</span><span>📐 2,600 sqft</span></div></div></div>
+      <div class="prop" data-type="rent" data-beds="2"><div class="ph"><span class="tag rent">FOR RENT</span><button class="fav" aria-label="Save">♡</button><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80" alt="Apartment interior"></div><div class="body"><div class="price">$2,100 <small>/month</small></div><h3>Bright City Apartment</h3><p class="addr">8 Marina Towers, Victoria Island</p><div class="specs"><span>🛏 2 Beds</span><span>🛁 1 Bath</span><span>📐 950 sqft</span></div></div></div>
+      <div class="prop" data-type="sale" data-beds="5"><div class="ph"><span class="tag">FOR SALE</span><button class="fav" aria-label="Save">♡</button><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80" alt="Luxury villa"></div><div class="body"><div class="price">$1,450,000</div><h3>Luxury Pool Villa</h3><p class="addr">2 Banana Island Road, Ikoyi</p><div class="specs"><span>🛏 5 Beds</span><span>🛁 5 Baths</span><span>📐 4,800 sqft</span></div></div></div>
+      <div class="prop" data-type="sale" data-beds="3"><div class="ph"><span class="tag">FOR SALE</span><button class="fav" aria-label="Save">♡</button><img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80" alt="Suburban house"></div><div class="body"><div class="price">$450,000</div><h3>Charming Suburban House</h3><p class="addr">31 Oak Avenue, GRA Ikeja</p><div class="specs"><span>🛏 3 Beds</span><span>🛁 2 Baths</span><span>📐 1,800 sqft</span></div></div></div>
+      <div class="prop" data-type="rent" data-beds="3"><div class="ph"><span class="tag rent">FOR RENT</span><button class="fav" aria-label="Save">♡</button><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="Townhouse"></div><div class="body"><div class="price">$3,400 <small>/month</small></div><h3>Contemporary Townhouse</h3><p class="addr">5 Admiralty Way, Lekki</p><div class="specs"><span>🛏 3 Beds</span><span>🛁 3 Baths</span><span>📐 2,100 sqft</span></div></div></div>
+      <div class="prop" data-type="rent" data-beds="1"><div class="ph"><span class="tag rent">FOR RENT</span><button class="fav" aria-label="Save">♡</button><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80" alt="Studio apartment"></div><div class="body"><div class="price">$1,200 <small>/month</small></div><h3>Cozy Studio Loft</h3><p class="addr">19 Allen Avenue, Ikeja</p><div class="specs"><span>🛏 1 Bed</span><span>🛁 1 Bath</span><span>📐 620 sqft</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="head"><div><span class="eyebrow">Why Prime Estates</span><h2>Buying &amp; renting made simple</h2></div></div>
+    <div class="grid">
+      <div><div class="ico">🏡</div><h3>Verified Listings</h3><p>Every property is inspected and verified by our team before it goes live.</p></div>
+      <div><div class="ico">🤝</div><h3>Trusted Agents</h3><p>Work with licensed local agents who know every street and price trend.</p></div>
+      <div><div class="ico">📅</div><h3>Instant Viewings</h3><p>Book a viewing online in seconds and get confirmation straight away.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="agents">
+  <div class="wrap">
+    <div class="head"><div><span class="eyebrow">Our Team</span><h2>Meet our agents</h2></div></div>
+    <div class="agents">
+      <div class="agent"><div class="ph"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Agent"></div><strong>Daniel Okafor</strong><br><small>Senior Sales Agent</small></div>
+      <div class="agent"><div class="ph"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=500&q=80" alt="Agent"></div><strong>Amaka Bello</strong><br><small>Rental Specialist</small></div>
+      <div class="agent"><div class="ph"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80" alt="Agent"></div><strong>James Adeyemi</strong><br><small>Luxury Homes</small></div>
+      <div class="agent"><div class="ph"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=500&q=80" alt="Agent"></div><strong>Grace Eze</strong><br><small>Property Manager</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap cta">
+    <div><h2>Thinking of selling?</h2><p>Get a free valuation from a local expert within 24 hours.</p></div>
+    <form id="valForm"><input required placeholder="Your name"><input required type="email" placeholder="Email address"><input placeholder="Property address"><button class="btn" type="submit">Get Free Valuation</button><span class="done" id="valDone"></span></form>
+  </div>
+</section>
+
+<footer>© Prime Estates · Demo real estate website designed &amp; built by <a href="../../index.html">BobbyDev</a></footer>
+
+<script src="../demo-common.js"></script>
+<script>
+  var mode = 'all';
+  function filter() {
+    var beds = +document.getElementById('beds').value, shown = 0;
+    document.querySelectorAll('.prop').forEach(function (p) {
+      var ok = (mode === 'all' || p.dataset.type === mode) && +p.dataset.beds >= beds;
+      p.style.display = ok ? '' : 'none';
+      if (ok) shown++;
+    });
+    document.getElementById('count').textContent = shown + (shown === 1 ? ' property' : ' properties');
+  }
+  document.querySelectorAll('.mode').forEach(function (m) {
+    m.addEventListener('click', function () {
+      document.querySelectorAll('.mode').forEach(function (x) { x.classList.remove('active'); });
+      m.classList.add('active'); mode = m.dataset.mode; filter();
+    });
+  });
+  document.getElementById('beds').addEventListener('change', filter);
+  document.getElementById('finder').addEventListener('submit', function () { filter(); document.getElementById('listings').scrollIntoView({ behavior: 'smooth' }); });
+  document.querySelectorAll('.fav').forEach(function (f) {
+    f.addEventListener('click', function () { f.textContent = f.textContent === '♡' ? '♥' : '♡'; f.style.color = '#e11d48'; });
+  });
+  document.getElementById('valForm').addEventListener('submit', function (e) {
+    e.preventDefault(); document.getElementById('valDone').textContent = '✓ Thanks! An agent will contact you within 24 hours.';
+  });
+</script>
+</body>
+</html>

@@ -59,7 +59,7 @@
 <!-- HERO SECTION -->
 <section class="section" style="text-align: center; padding-top: 4rem;">
 <h1>Recent Projects</h1>
-<p style="font-size: 1.1rem; max-width: 600px; margin: 1.5rem auto; color: var(--text-secondary);">Hover any card to see the full project breakdown and results.</p>
+<p style="font-size: 1.1rem; max-width: 600px; margin: 1.5rem auto; color: var(--text-secondary);">Hover any card to see the full project breakdown and results. Cards marked <strong style="color:var(--accent)">Live Demo</strong> open a working website you can click through.</p>
 </section>
 <!-- PROJECTS GRID -->
 <section class="section">
@@ -159,13 +159,14 @@
 <div class="vflip-card proj-card">
 <div class="vflip-inner">
 <div class="vflip-front">
-<img class="proj-mock" src="assets/project-restaurant.svg" alt="Restaurant Website"/>
+<div class="proj-live" style="background-image:url(assets/project-restaurant.svg)"><iframe src="demos/restaurant/" title="Restaurant Website live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div>
 <div class="vflip-front-label"><h3>Restaurant Website</h3></div>
 </div>
 <div class="vflip-back">
 <h3>Restaurant Website</h3>
 <p>Restaurant website with online menu, food gallery, table reservations and order-online buttons, designed mobile-first so hungry customers can book or order in seconds.</p>
 <div class="vflip-tags"><span class="card-tag">Restaurant</span><span class="card-tag">Reservations</span><span class="card-tag">Online Menu</span></div>
+<a href="demos/restaurant/" target="_blank" rel="noopener" class="proj-demo-link">View Live Demo ↗</a>
 <a href="contact.html">Start Similar →</a>
 </div>
 </div>
@@ -174,13 +175,14 @@
 <div class="vflip-card proj-card">
 <div class="vflip-inner">
 <div class="vflip-front">
-<img class="proj-mock" src="assets/project-multivendor.svg" alt="Multivendor Marketplace"/>
+<div class="proj-live" style="background-image:url(assets/project-multivendor.svg)"><iframe src="demos/marketplace/" title="Multivendor Marketplace live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div>
 <div class="vflip-front-label"><h3>Multivendor Marketplace</h3></div>
 </div>
 <div class="vflip-back">
 <h3>Multivendor Marketplace</h3>
 <p>Multivendor marketplace where many sellers run their own stores: vendor sign-up and dashboards, commission setup, product search and categories, and secure checkout.</p>
 <div class="vflip-tags"><span class="card-tag">Multivendor</span><span class="card-tag">WooCommerce</span><span class="card-tag">Marketplace</span></div>
+<a href="demos/marketplace/" target="_blank" rel="noopener" class="proj-demo-link">View Live Demo ↗</a>
 <a href="contact.html">Start Similar →</a>
 </div>
 </div>
@@ -189,13 +191,14 @@
 <div class="vflip-card proj-card">
 <div class="vflip-inner">
 <div class="vflip-front">
-<img class="proj-mock" src="assets/project-realestate.svg" alt="Real Estate Website"/>
+<div class="proj-live" style="background-image:url(assets/project-realestate.svg)"><iframe src="demos/realestate/" title="Real Estate Website live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div>
 <div class="vflip-front-label"><h3>Real Estate Website</h3></div>
 </div>
 <div class="vflip-back">
 <h3>Real Estate Website</h3>
 <p>Realtor and real estate website with property listings, search filters by location, price and bedrooms, agent profiles, and enquiry forms that capture buyer and renter leads.</p>
 <div class="vflip-tags"><span class="card-tag">Real Estate</span><span class="card-tag">Property Listings</span><span class="card-tag">Lead Capture</span></div>
+<a href="demos/realestate/" target="_blank" rel="noopener" class="proj-demo-link">View Live Demo ↗</a>
 <a href="contact.html">Start Similar →</a>
 </div>
 </div>
@@ -204,13 +207,14 @@
 <div class="vflip-card proj-card">
 <div class="vflip-inner">
 <div class="vflip-front">
-<img class="proj-mock" src="assets/project-booking.svg" alt="Booking Website"/>
+<div class="proj-live" style="background-image:url(assets/project-booking.svg)"><iframe src="demos/booking/" title="Booking Website live preview" loading="lazy" tabindex="-1" aria-hidden="true" scrolling="no"></iframe></div>
 <div class="vflip-front-label"><h3>Booking Website</h3></div>
 </div>
 <div class="vflip-back">
 <h3>Booking Website</h3>
 <p>Appointment booking website with a live calendar, time-slot selection, online payments and automatic email reminders, perfect for salons, clinics, consultants and rentals.</p>
 <div class="vflip-tags"><span class="card-tag">Booking System</span><span class="card-tag">Payments</span><span class="card-tag">Automation</span></div>
+<a href="demos/booking/" target="_blank" rel="noopener" class="proj-demo-link">View Live Demo ↗</a>
 <a href="contact.html">Start Similar →</a>
 </div>
 </div>
@@ -525,5 +529,18 @@
 <!-- FLOATING WHATSAPP BUTTON -->
 <a class="whatsapp-float" href="https://wa.me/message/BYC7YFBUX4QGG1" target="_blank" title="Chat on WhatsApp"></a>
 <script src="animations.js"></script>
+<script>
+// Scale live demo previews (rendered at desktop width) to fit their portfolio cards.
+(function () {
+  function fit() {
+    document.querySelectorAll('.proj-live').forEach(function (box) {
+      var f = box.querySelector('iframe');
+      if (f) f.style.transform = 'scale(' + (box.clientWidth / 1280) + ')';
+    });
+  }
+  fit();
+  window.addEventListener('resize', fit);
+})();
+</script>
 </body>
 </html>

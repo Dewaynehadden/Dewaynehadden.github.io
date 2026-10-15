@@ -2261,6 +2261,9 @@ footer {
 /* Home services preview: 6 cards in two even rows */
 @media (min-width: 1101px) { .home .flip-service-grid { grid-template-columns: repeat(3, 1fr); } }
 
-/* Portfolio: illustrated mockup cards show the mockup above a dark title area */
-.proj-card .vflip-front img.proj-mock { height: 74%; object-fit: contain; object-position: center center; }
-.proj-card .vflip-front:has(.proj-mock) { background: linear-gradient(180deg, #131929, #0a0f1e); }
+/* Portfolio: live demo cards render the demo site, scaled down, as the card image */
+.proj-live { position: absolute; inset: 0; overflow: hidden; background: #111827 center / cover no-repeat; }
+.proj-live iframe { width: 1280px; height: 1600px; border: 0; transform-origin: 0 0; pointer-events: none; background: #fff; }
+.proj-live::before { content: 'Live Demo'; position: absolute; top: 12px; right: 12px; z-index: 2; background: var(--accent); color: var(--primary-dark); font-size: .72rem; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+.proj-card .vflip-front:has(.proj-live) .vflip-front-label { z-index: 3; }
+.proj-card .vflip-back a.proj-demo-link { display: inline-block; margin-bottom: 8px; background: var(--accent); color: var(--primary-dark); padding: 8px 16px; border-radius: 8px; font-weight: 700; }
