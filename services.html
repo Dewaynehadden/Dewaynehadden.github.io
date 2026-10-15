@@ -20,7 +20,7 @@
 }
 .svc-back-link {
   display: inline-flex; align-items: center; gap: 5px;
-  font-size: .75rem; color: rgba(255,255,255,.5);
+  font-size: .75rem; color: #555b66;
   cursor: pointer; background: none; border: none;
   margin-top: 6px; padding: 0; text-decoration: none;
 }
@@ -34,7 +34,7 @@
 }
 .svc-modal-overlay.open { display: flex; }
 .svc-modal {
-  background: linear-gradient(145deg,#0f1e30,#0a1220);
+  background: linear-gradient(145deg,#ffffff,#f7f6f4);
   border: 1px solid rgba(40,200,120,.25);
   border-radius: 20px; padding: 2rem;
   width: 100%; max-width: 520px;
@@ -45,22 +45,22 @@
 .svc-modal::-webkit-scrollbar { display: none; }
 .svc-modal-close {
   position: absolute; top: 14px; right: 18px;
-  background: rgba(255,255,255,.08); border: none; color: #fff;
+  background: rgba(0,0,0,0.05); border: none; color: #16181d;
   width: 32px; height: 32px; border-radius: 50%;
   font-size: 1.1rem; cursor: pointer; display: flex;
   align-items: center; justify-content: center; transition: background .2s;
 }
-.svc-modal-close:hover { background: rgba(255,255,255,.18); }
+.svc-modal-close:hover { background: rgba(0,0,0,0.11); }
 .svc-modal-title {
   font-family: 'Poppins', sans-serif; font-size: 1.35rem;
-  font-weight: 700; color: #fff; margin: 0 0 4px;
+  font-weight: 700; color: #16181d; margin: 0 0 4px;
 }
 .svc-modal-service {
   display: inline-block; background: rgba(40,168,100,.18);
   color: var(--accent,#28a864); font-size: .78rem; font-weight: 600;
   padding: 3px 12px; border-radius: 20px; margin-bottom: 18px;
 }
-.svc-modal-sub { font-size: .88rem; color: rgba(255,255,255,.6); margin-bottom: 16px; }
+.svc-modal-sub { font-size: .88rem; color: #555b66; margin-bottom: 16px; }
 
 /* Quick contact buttons */
 .svc-quick-btns {
@@ -70,14 +70,14 @@
   display: flex; align-items: center; gap: 10px;
   padding: 12px 14px; border-radius: 12px; text-decoration: none;
   font-size: .85rem; font-weight: 600; transition: transform .2s, box-shadow .2s;
-  border: 1px solid rgba(255,255,255,.08);
+  border: 1px solid rgba(0,0,0,0.05);
 }
-.svc-quick-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.3); }
+.svc-quick-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.07); }
 .svc-quick-btn img { width: 22px; height: 22px; flex-shrink: 0; }
-.svc-quick-btn.wa  { background: rgba(37,211,102,.12); color: #25D366; border-color: rgba(37,211,102,.3); }
-.svc-quick-btn.up  { background: rgba(111,218,68,.12);  color: #6FDA44; border-color: rgba(111,218,68,.3); }
-.svc-quick-btn.fv  { background: rgba(29,191,115,.12); color: #1DBF73; border-color: rgba(29,191,115,.3); }
-.svc-quick-btn.gm  { background: rgba(234,67,53,.12);   color: #EA4335; border-color: rgba(234,67,53,.3); }
+.svc-quick-btn.wa  { background: rgba(37,211,102,.12); color: #128c4a; border-color: rgba(37,211,102,.3); }
+.svc-quick-btn.up  { background: rgba(111,218,68,.12);  color: #0f7a00; border-color: rgba(111,218,68,.3); }
+.svc-quick-btn.fv  { background: rgba(29,191,115,.12); color: #0d7a48; border-color: rgba(29,191,115,.3); }
+.svc-quick-btn.gm  { background: rgba(234,67,53,.12);   color: #c5221f; border-color: rgba(234,67,53,.3); }
 
 /* Divider */
 .svc-divider {
@@ -86,23 +86,23 @@
 .svc-divider::before, .svc-divider::after {
   content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.1);
 }
-.svc-divider span { font-size: .75rem; color: rgba(255,255,255,.4); white-space: nowrap; }
+.svc-divider span { font-size: .75rem; color: #555b66; white-space: nowrap; }
 
 /* Form */
 .svc-form { display: flex; flex-direction: column; gap: 12px; }
 .svc-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .svc-form input, .svc-form select, .svc-form textarea {
-  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
-  border-radius: 10px; padding: 12px 14px; color: #fff;
+  background: rgba(0,0,0,0.04); border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 10px; padding: 12px 14px; color: #16181d;
   font-family: 'Inter', sans-serif; font-size: .88rem; width: 100%;
   box-sizing: border-box; outline: none; transition: border-color .2s;
 }
 .svc-form input:focus, .svc-form select:focus, .svc-form textarea:focus {
   border-color: var(--accent,#28a864);
 }
-.svc-form input::placeholder, .svc-form textarea::placeholder { color: rgba(255,255,255,.35); }
-.svc-form select { color: rgba(255,255,255,.7); }
-.svc-form select option { background: #0f1e30; color: #fff; }
+.svc-form input::placeholder, .svc-form textarea::placeholder { color: #555b66; }
+.svc-form select { color: #555b66; }
+.svc-form select option { background: #ffffff; color: #16181d; }
 .svc-form textarea { resize: vertical; min-height: 100px; }
 .svc-form .btn-primary {
   padding: 14px; font-size: .95rem; border-radius: 12px; cursor: pointer;
@@ -168,7 +168,7 @@
 <section class="section" style="text-align: center; padding-top: 4rem;">
 <h1>10 Services. One Specialist.</h1>
 <p style="font-size: 1.1rem; max-width: 600px; margin: 1.5rem auto; color: var(--text-secondary);">Every service is built around one goal: helping ecommerce businesses launch faster, rank higher, and sell more.</p>
-<p style="font-size:.85rem;color:rgba(255,255,255,.4);margin-top:-1rem;">Click any card to learn more &amp; get started</p>
+<p style="font-size:.85rem;color: #555b66;margin-top:-1rem;">Click any card to learn more &amp; get started</p>
 </section>
 <!-- SERVICES GRID -->
 <section class="section">
@@ -420,6 +420,7 @@
 <a href="portfolio.html">Portfolio</a>
 <a href="reviews.html">Reviews</a>
 <a href="contact.html">Contact</a>
+<a href="payment.html">Make a Payment</a>
 </div>
 </div>
 <div class="footer-col">
