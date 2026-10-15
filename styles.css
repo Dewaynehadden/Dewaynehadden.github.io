@@ -2372,3 +2372,23 @@ nav { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(10px); border
 .availability-tag { color: #15803d; background: rgba(22, 163, 74, 0.1); border-color: rgba(22, 163, 74, 0.35); }
 .availability-dot { background: #16a34a; }
 .tech-logo-back h3 { color: var(--text-primary) !important; }
+
+/* ===========================
+   TERMS & POLICIES
+   =========================== */
+.legal-hero { text-align: center; padding-top: 4rem; padding-bottom: 1rem; }
+.legal-hero .eyebrow { display: block; margin-bottom: .75rem; }
+.legal-hero p { color: var(--text-secondary); margin-top: 1rem; }
+.legal { max-width: 780px; margin: 0 auto; padding: 2.5rem; background: #fff; border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 6px 22px rgba(0,0,0,.05); }
+.legal-toc { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2rem; }
+.legal-toc a { background: #fdecea; color: #8f1c1c; padding: 6px 14px; border-radius: 20px; font-size: .85rem; font-weight: 600; }
+.legal h2 { font-size: 1.45rem; margin: 2.25rem 0 .75rem; scroll-margin-top: 90px; }
+.legal h2:first-of-type { margin-top: 0; }
+.legal h3 { font-size: 1.05rem; margin: 1.25rem 0 .4rem; }
+.legal p, .legal li { color: var(--text-secondary); line-height: 1.8; }
+.legal ul { padding-left: 1.25rem; margin: .5rem 0 1rem; }
+.legal li { margin-bottom: .4rem; }
+.legal strong { color: var(--text-primary); }
+.legal a, .pay-info a, .pay-foot a { color: var(--accent); font-weight: 600; text-decoration: underline; }
+@media (max-width: 600px) { .legal { padding: 1.5rem 1.1rem; border-radius: 14px; } }
+.legal .legal-toc a { color: #8f1c1c; text-decoration: none; }
