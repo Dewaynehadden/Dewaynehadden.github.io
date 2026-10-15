@@ -342,7 +342,7 @@ function addEventListenerToAll(selector, event, callback) {
     this.dx = (Math.random()-.5)*0.6;
     this.dy = (Math.random()-.5)*0.6;
     this.alpha = Math.random()*0.08+0.02;
-    this.color = Math.random()>0.5?'214,47,47':'255,160,110';
+    this.color = Math.random()>0.5?'139,144,245':'46,74,138';
   }
 
   Bubble.prototype.draw = function(){
