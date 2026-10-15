@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" role="img" aria-label="Real estate website">
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b2d2a"/><stop offset="1" stop-color="#081a1f"/></linearGradient></defs>
+<rect width="600" height="420" fill="url(#bg)"/>
+<rect x="40" y="36" width="520" height="360" rx="14" fill="#ffffff"/>
+<rect x="40" y="36" width="520" height="30" rx="14" fill="#e9edf3"/><rect x="40" y="52" width="520" height="14" fill="#e9edf3"/>
+<circle cx="62" cy="51" r="5" fill="#ff5f57"/><circle cx="80" cy="51" r="5" fill="#febc2e"/><circle cx="98" cy="51" r="5" fill="#28c840"/>
+<rect x="150" y="44" width="300" height="14" rx="7" fill="#ffffff"/>
+<g font-family="Poppins, Inter, Arial, sans-serif">
+<rect x="40" y="66" width="520" height="34" fill="#ffffff"/>
+<text x="62" y="89" fill="#0b2d2a" font-size="16" font-weight="700">Prime<tspan fill="#0f9d8a">Estates</tspan></text>
+<g fill="#4a5a5a" font-size="11"><text x="290" y="88">Buy</text><text x="326" y="88">Rent</text><text x="366" y="88">Sell</text><text x="402" y="88">Agents</text></g>
+<rect x="40" y="100" width="520" height="130" fill="#0f9d8a"/>
+<path d="M380 230 V170 L440 130 L500 170 V230 Z" fill="#ffffff" opacity=".95"/><path d="M370 172 L440 122 L510 172" stroke="#0b2d2a" stroke-width="8" fill="none"/><rect x="425" y="190" width="30" height="40" fill="#0b2d2a"/><rect x="395" y="180" width="20" height="18" fill="#9fe3d9"/><rect x="465" y="180" width="20" height="18" fill="#9fe3d9"/>
+<text x="66" y="148" fill="#fff" font-size="22" font-weight="700">Find Your Dream Home</text>
+<rect x="66" y="166" width="270" height="34" rx="8" fill="#fff"/><text x="80" y="187" fill="#8a9a9a" font-size="11">City, neighborhood or ZIP</text><rect x="276" y="171" width="54" height="24" rx="6" fill="#0b2d2a"/><text x="303" y="187" fill="#fff" font-size="10" font-weight="700" text-anchor="middle">Search</text>
+<g><rect x="62" y="248" width="148" height="132" rx="10" fill="#f3f7f7" stroke="#dde8e7"/><rect x="70" y="256" width="132" height="66" rx="6" fill="#cfe8e4"/><text x="70" y="342" fill="#0b2d2a" font-size="13" font-weight="700">$450,000</text><text x="70" y="360" fill="#6a7a7a" font-size="10">3 bd · 2 ba · 1,800 sqft</text><rect x="150" y="262" width="46" height="16" rx="8" fill="#0f9d8a"/><text x="173" y="274" fill="#fff" font-size="8" font-weight="700" text-anchor="middle">FOR SALE</text><rect x="228" y="248" width="148" height="132" rx="10" fill="#f3f7f7" stroke="#dde8e7"/><rect x="236" y="256" width="132" height="66" rx="6" fill="#d9e4f5"/><text x="236" y="342" fill="#0b2d2a" font-size="13" font-weight="700">$2,100/mo</text><text x="236" y="360" fill="#6a7a7a" font-size="10">2 bd · 1 ba · 950 sqft</text><rect x="316" y="262" width="46" height="16" rx="8" fill="#0f9d8a"/><text x="339" y="274" fill="#fff" font-size="8" font-weight="700" text-anchor="middle">FOR RENT</text><rect x="394" y="248" width="148" height="132" rx="10" fill="#f3f7f7" stroke="#dde8e7"/><rect x="402" y="256" width="132" height="66" rx="6" fill="#f0e2cf"/><text x="402" y="342" fill="#0b2d2a" font-size="13" font-weight="700">$720,000</text><text x="402" y="360" fill="#6a7a7a" font-size="10">4 bd · 3 ba · 2,600 sqft</text><rect x="482" y="262" width="46" height="16" rx="8" fill="#0f9d8a"/><text x="505" y="274" fill="#fff" font-size="8" font-weight="700" text-anchor="middle">NEW</text></g></g>
+</svg>

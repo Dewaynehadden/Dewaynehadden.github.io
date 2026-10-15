@@ -2260,3 +2260,7 @@ footer {
 
 /* Home services preview: 6 cards in two even rows */
 @media (min-width: 1101px) { .home .flip-service-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* Portfolio: illustrated mockup cards show the mockup above a dark title area */
+.proj-card .vflip-front img.proj-mock { height: 74%; object-fit: contain; object-position: center center; }
+.proj-card .vflip-front:has(.proj-mock) { background: linear-gradient(180deg, #131929, #0a0f1e); }
