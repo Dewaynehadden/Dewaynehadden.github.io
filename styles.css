@@ -2257,3 +2257,6 @@ footer {
   .consult-card { padding: 2.5rem 1.25rem; border-radius: 18px; }
   .consult-actions .btn { width: 100%; text-align: center; }
 }
+
+/* Home services preview: 6 cards in two even rows */
+@media (min-width: 1101px) { .home .flip-service-grid { grid-template-columns: repeat(3, 1fr); } }

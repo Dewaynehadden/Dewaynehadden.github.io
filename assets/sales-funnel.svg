@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img" aria-label="Sales funnel">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d1b33"/><stop offset="1" stop-color="#14123a"/></linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#00d4ff" stop-opacity=".35"/><stop offset="1" stop-color="#00d4ff" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)"/>
+  <circle cx="300" cy="200" r="190" fill="url(#glow)"/>
+  <path d="M150 70 H450 L420 130 H180 Z" fill="#00d4ff" opacity=".95"/>
+  <path d="M188 145 H412 L382 205 H218 Z" fill="#00b3e6" opacity=".9"/>
+  <path d="M226 220 H374 L344 280 H256 Z" fill="#0099cc" opacity=".85"/>
+  <path d="M264 295 H336 L318 340 H282 Z" fill="#1dbf73"/>
+  <g font-family="Poppins, Inter, Arial, sans-serif" font-weight="600" font-size="20" fill="#0a0f1e" text-anchor="middle">
+    <text x="300" y="107">Visitors</text><text x="300" y="182">Leads</text><text x="300" y="257" fill="#ffffff">Sales</text>
+  </g>
+  <g fill="#ffffff" opacity=".8"><circle cx="190" cy="40" r="6"/><circle cx="250" cy="30" r="6"/><circle cx="300" cy="44" r="6"/><circle cx="355" cy="28" r="6"/><circle cx="410" cy="40" r="6"/></g>
+  <text x="300" y="378" text-anchor="middle" font-family="Poppins, Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#1dbf73">$ $ $</text>
+</svg>
