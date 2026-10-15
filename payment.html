@@ -110,6 +110,7 @@
 <button type="button" class="pay-choice active" data-amount="100">$100</button>
 </div>
 <label>Or enter a custom amount ($)<input name="amount" id="amountInput" type="number" min="10" step="1" value="100" required/></label>
+<p class="pay-ngn" id="ngnNote" hidden></p>
 <label class="pay-check"><input type="checkbox" id="agree" required/> <span>I understand this deposit reserves my project slot, and the full scope, deliverables and price will be confirmed before work begins.</span></label>
 <span class="pay-label">Choose Payment Method</span>
 <div class="pay-choices pay-methods" id="methodChoices">
@@ -236,7 +237,7 @@
 // Fill these in as each payment method is ready. Anything left empty falls back to
 // WhatsApp, where the client's deposit details are sent to you as a pre-filled message.
 var PAYMENT = {
-  paystackPublicKey: '',  // from Paystack dashboard > Settings > API Keys (starts with pk_live_)
+  paystackPublicKey: 'pk_live_35b3575958dc763327f088adf16721ae8cf0e4db', // public key (safe to publish)
   paystackCurrency: 'NGN',// 'NGN', or 'USD' once Paystack approves USD for your account
   usdToNgn: 1500,         // rate used to convert $ amounts when paystackCurrency is 'NGN'
   paystackLink: '',       // optional: a Paystack Payment Page link instead of the public key
@@ -307,7 +308,16 @@ var WHATSAPP_LINK = 'https://wa.me/message/BYC7YFBUX4QGG1';
   }
   copier('copyBtn', function () { return PAYMENT.bankAccountNumber; });
   copier('copyWallet', function () { return PAYMENT.cryptoWallet; });
+  function ngnNote() {
+    var n = $('ngnNote'), amt = +$('amountInput').value || 0;
+    var show = method === 'card' && PAYMENT.paystackPublicKey && PAYMENT.paystackCurrency === 'NGN' && amt > 0;
+    n.hidden = !show;
+    if (show) n.textContent = '≈ ₦' + Math.round(amt * PAYMENT.usdToNgn).toLocaleString('en-NG') + ' will be charged via Paystack (at ₦' + PAYMENT.usdToNgn.toLocaleString('en-NG') + ' = $1)';
+  }
+  $('amountInput').addEventListener('input', ngnNote);
+  document.querySelectorAll('#amountChoices .pay-choice, #methodChoices .pay-choice').forEach(function (b) { b.addEventListener('click', ngnNote); });
   render();
+  ngnNote();
 
   function whatsapp(text) {
     if (PAYMENT.whatsappNumber) {
